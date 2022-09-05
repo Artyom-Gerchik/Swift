@@ -21,7 +21,7 @@
 		779FCA6628C3B1E70070CE95 /* PPO_LAB_1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPO_LAB_1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		779FCA6928C3B1E70070CE95 /* PPO_LAB_1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPO_LAB_1App.swift; sourceTree = "<group>"; };
 		779FCA6B28C3B1E70070CE95 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
-		779FCA6D28C3B1E80070CE95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		779FCA6D28C3B1E80070CE95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PPO_LAB_1/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		779FCA7028C3B1E80070CE95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		779FCA7728C3B5D90070CE95 /* SubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryView.swift; sourceTree = "<group>"; };
 		779FCA7928C3C6460070CE95 /* CalculateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };

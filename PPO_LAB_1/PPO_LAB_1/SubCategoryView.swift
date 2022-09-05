@@ -23,9 +23,9 @@ struct SubCategoryView: View {
         case .distanceCategory:
             bodyForDistance
         case .weightCategory:
-            Text("Weight")
+            bodyForWeight
         case .currencyCategory:
-            Text("Currency")
+            bodyForCurrency
         }
     }
     
@@ -41,25 +41,74 @@ struct SubCategoryView: View {
                 Label("Kilometers <-> Miles", systemImage: "ruler")
             }
             NavigationLink {
-                CalculateView(vm:CalculateViewModel(coefficient: 100,
-                                                            type1: "Centimeter",
-                                                            type2: "Meter"))
+                CalculateView(vm:CalculateViewModel(coefficient: 1/10,
+                                                            type1: "Centimeters",
+                                                            type2: "Millimetres"))
             } label: {
-                Label("Centimeter <-> Meter", systemImage: "ruler")
+                Label("Centimeters <-> Millimetres", systemImage: "ruler")
             }
             NavigationLink {
                 CalculateView(vm:CalculateViewModel(coefficient: 1/3.281,
                                                             type1: "Meters",
                                                             type2: "Ft's"))
             } label: {
-                Label("Meters <-> Ft's. ", systemImage: "ruler")
+                Label("Meters <-> Ft's", systemImage: "ruler")
+            }
+        }
+    }
+    
+    @ViewBuilder
+    var bodyForWeight: some View {
+        List{
+            NavigationLink {
+                CalculateView(vm:CalculateViewModel(coefficient: 1/2.205,
+                                                            type1: "Kilogramms",
+                                                            type2: "Pounds"))
+            } label: {
+                Label("Kilogramms <-> Pounds", systemImage: "scalemass")
+            }
+            NavigationLink {
+                CalculateView(vm:CalculateViewModel(coefficient: 1/32000,
+                                                            type1: "US tons",
+                                                            type2: "Ounces"))
+            } label: {
+                Label("US ton <-> Ounce", systemImage: "scalemass")
+            }
+            NavigationLink {
+                CalculateView(vm:CalculateViewModel(coefficient: 1/157.5,
+                                                            type1: "Tonnes",
+                                                            type2: "Stones"))
+            } label: {
+                Label("Tonnes <-> Stones", systemImage: "scalemass")
+            }
+        }
+    }
+    
+    @ViewBuilder
+    var bodyForCurrency: some View {
+        List{
+            NavigationLink {
+                CalculateView(vm:CalculateViewModel(coefficient: 2.5741,
+                                                            type1: "BYN",
+                                                            type2: "USD"))
+            } label: {
+                Label("BYN <-> USD", systemImage: "bitcoinsign.square")
+            }
+            NavigationLink {
+                CalculateView(vm:CalculateViewModel(coefficient: 2.5525,
+                                                            type1: "BYN",
+                                                            type2: "EUR"))
+            } label: {
+                Label("BYN <-> EUR", systemImage: "bitcoinsign.square")
+            }
+            NavigationLink {
+                CalculateView(vm:CalculateViewModel(coefficient: 2.9633,
+                                                            type1: "BYN",
+                                                            type2: "GBP"))
+            } label: {
+                Label("BYN <-> GBP", systemImage: "bitcoinsign.square")
             }
         }
     }
 }
 
-struct SubCategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        SubCategoryView(subCategory: .distanceCategory)
-    }
-}

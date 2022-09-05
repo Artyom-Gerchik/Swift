@@ -23,11 +23,14 @@ class CalculateViewModel: ObservableObject{
     
     @Published var input: String = "" {
         didSet {
+            if input.count == 10{
+                input = oldValue
+            }
             guard let inputAsDouble = Double(input) else {
                 output = "jopa"
                 return
             }
-            output = String(inputAsDouble / properCoefficent)
+            output = String(round((inputAsDouble / properCoefficent) * 1000) / 1000.0)
         }
     }
     @Published var output: String = ""
@@ -55,8 +58,8 @@ class CalculateViewModel: ObservableObject{
         }
         let coler: Color
         switch giveMe {
-        case "yellow":
-            coler = Color.yellow
+        case "purple":
+            coler = Color.purple
         case "black":
             coler = Color.black
         default:
