@@ -5,14 +5,19 @@
 //  Created by Artyom on 3.09.22.
 //
 
+import AlertToast
 import SwiftUI
 
 struct CalculateView {
     @ObservedObject var vm: CalculateViewModel
+    @State var copyToast = false
+    @State var swapToast = false
     
 }
 
 extension CalculateView: View {
+    
+    
     var body: some View {
         ZStack{
             VStack{
@@ -92,8 +97,10 @@ extension CalculateView: View {
                 }
                 //.padding(.horizontal, 12)
                 
+            }.toast(isPresenting: $swapToast, duration: 0.5, tapToDismiss: true){
+                AlertToast(displayMode: .hud, type: .regular, title: vm.directConversion ? "Direct" : "Reversed")
             }.foregroundColor(vm.readColor).padding(.all)
-        }        .background(
+        }.background(
             Image("wtf")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
@@ -113,12 +120,15 @@ extension CalculateView: View {
                     
                     Button(action: {
                         vm.pasteboard.string = vm.input
-                        
+                        copyToast.toggle()
                     }, label: {
                         Text("Copy")
                     })
                 }
+            }.toast(isPresenting: $copyToast, duration: 1, tapToDismiss: true){
+                AlertToast(displayMode: .hud, type: .regular, title: "Copied!")
             }
+            
             Divider()
             HStack{
                 Text(vm.type2)
@@ -126,10 +136,9 @@ extension CalculateView: View {
                 Text(vm.output)
                 if vm.isPremium{
                     Divider()
-                    
                     Button(action: {
                         vm.pasteboard.string = vm.output
-                        
+                        copyToast.toggle()
                     }, label: {
                         Text("Copy")
                     })
@@ -137,6 +146,7 @@ extension CalculateView: View {
             }
         }
         else{
+            
             HStack{
                 Text(vm.type2)
                 Spacer()
@@ -146,11 +156,14 @@ extension CalculateView: View {
                     
                     Button(action: {
                         vm.pasteboard.string = vm.input
+                        copyToast.toggle()
                         
                     }, label: {
                         Text("Copy")
                     })
                 }
+            }.toast(isPresenting: $copyToast, duration: 1, tapToDismiss: true){
+                AlertToast(displayMode: .hud, type: .regular, title: "Copied!")
             }
             Divider()
             HStack{
@@ -162,6 +175,7 @@ extension CalculateView: View {
                     
                     Button(action: {
                         vm.pasteboard.string = vm.output
+                        copyToast.toggle()
                         
                     }, label: {
                         Text("Copy")
@@ -183,6 +197,7 @@ extension CalculateView: View {
         if vm.isPremium{
             Button(action: {
                 vm.directConversion.toggle()
+                swapToast.toggle()
             }, label: {
                 let image = Image(systemName: "arrow.2.squarepath")
                 Text(vm.directConversion ? "Direct \(image)" : "Reversed \(image)")

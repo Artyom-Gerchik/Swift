@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		77196CB428C65ED100772F80 /* CalculateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77196CB328C65ED100772F80 /* CalculateViewModel.swift */; };
+		7762FB5C28C77CF40035BFBA /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 7762FB5B28C77CF40035BFBA /* AlertToast */; };
 		779FCA6A28C3B1E70070CE95 /* PPO_LAB_1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FCA6928C3B1E70070CE95 /* PPO_LAB_1App.swift */; };
 		779FCA6C28C3B1E70070CE95 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779FCA6B28C3B1E70070CE95 /* CategoryView.swift */; };
 		779FCA6E28C3B1E80070CE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 779FCA6D28C3B1E80070CE95 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7762FB5C28C77CF40035BFBA /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +100,9 @@
 			dependencies = (
 			);
 			name = PPO_LAB_1;
+			packageProductDependencies = (
+				7762FB5B28C77CF40035BFBA /* AlertToast */,
+			);
 			productName = PPO_LAB_1;
 			productReference = 779FCA6628C3B1E70070CE95 /* PPO_LAB_1.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +131,9 @@
 				Base,
 			);
 			mainGroup = 779FCA5D28C3B1E70070CE95;
+			packageReferences = (
+				7762FB5A28C77CF40035BFBA /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
 			productRefGroup = 779FCA6728C3B1E70070CE95 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -553,6 +561,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7762FB5A28C77CF40035BFBA /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7762FB5B28C77CF40035BFBA /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7762FB5A28C77CF40035BFBA /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 779FCA5E28C3B1E70070CE95 /* Project object */;
 }

@@ -58,12 +58,12 @@ class CalculateViewModel: ObservableObject{
         }
         let coler: Color
         switch giveMe {
-        case "purple":
-            coler = Color.purple
+        case "red":
+            coler = Color.red
         case "black":
             coler = Color.black
         default:
-            coler = Color.red
+            coler = Color.purple
         }
         return coler
     }
