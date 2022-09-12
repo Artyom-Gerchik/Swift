@@ -23,9 +23,9 @@ class CalculateViewModel: ObservableObject{
     
     @Published var input: String = "" {
         didSet {
-            if input.count == 10{
-                input = oldValue
-            }
+//            if input.count == 10{
+//                input = oldValue
+//            }
             guard let inputAsDouble = Double(input) else {
                 output = "jopa"
                 return
