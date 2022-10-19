@@ -26,8 +26,12 @@ struct CategoryView: View {
                 } label: {
                     Label("Currency", systemImage: "folder")
                 }
+                NavigationLink {
+                    SubCategoryView(subCategory: .testCategory)
+                } label: {
+                    Label("Test", systemImage: "testtube.2")
+                }
             }
         }
     }
 }
-
