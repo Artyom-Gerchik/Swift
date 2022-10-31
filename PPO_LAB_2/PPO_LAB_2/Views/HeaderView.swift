@@ -149,12 +149,26 @@ extension HeaderView: View {
                         .font(.system(size:vm.fontSize, weight: .regular))
                 }).accentColor(Color.primary)
             }.padding()
+        }else if (vm.state == ViewModel.State.createSequencePage){
+            HStack{
+                Button(action: {
+                    withAnimation(.easeIn(duration: 0.25)) {
+                        vm.state = ViewModel.State.secondPage
+                    }
+                }, label: {
+                    Image(systemName: "chevron.backward")
+                        .font(.system(size:vm.fontSize, weight: .regular))
+                }).accentColor(Color.primary)
+                
+                Spacer()
+                
+            }.padding()
         }
     }
 }
 
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(vm: ViewModel(state: ViewModel.State.timerPage, fontSize: 24, actionsOnMainPage: []))
+        HeaderView(vm: ViewModel(state: ViewModel.State.timerPage, fontSize: 24, actionsOnMainPage: [], sequences: []))
     }
 }

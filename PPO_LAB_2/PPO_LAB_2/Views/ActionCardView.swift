@@ -138,7 +138,11 @@ extension ActionCardView: View {
                     VStack{
                         Button(action: {
                             withAnimation(.easeIn(duration: 0.25)) {
-                                vm.removeActionFromMainPage(idToRemove: actionId)
+                                if(vm.state == ViewModel.State.mainPage){
+                                    vm.removeActionFromMainPage(idToRemove: actionId)
+                                }else if(vm.state == ViewModel.State.createSequencePage){
+                                    vm.removeActionFromSequenceCreatePage(idToRemove: actionId)
+                                }
                             }
                         }, label: {
                             Image(systemName: "xmark")

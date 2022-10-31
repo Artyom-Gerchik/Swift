@@ -91,7 +91,7 @@ class DB_Manager{
         var viewModelToReturn: ViewModel!
         do {
             for viewModel in try db.prepare(viewModels) {
-                let viewModel: ViewModel = ViewModel(state: ViewModel.State.mainPage, fontSize: Double(viewModel[fontSize]), actionsOnMainPage: [])
+                let viewModel: ViewModel = ViewModel(state: ViewModel.State.mainPage, fontSize: Double(viewModel[fontSize]), actionsOnMainPage: [], sequences: [])
                 viewModelToReturn = viewModel
                 break
             }

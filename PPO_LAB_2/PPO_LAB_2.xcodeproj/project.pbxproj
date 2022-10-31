@@ -21,7 +21,8 @@
 		779453EF2907161000DF8E5D /* ActionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779453EE2907161000DF8E5D /* ActionCardView.swift */; };
 		779453F12907F3A100DF8E5D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779453F02907F3A100DF8E5D /* TimerView.swift */; };
 		77D4DE32290FD1E800927D82 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4DE31290FD1E800927D82 /* Sequence.swift */; };
-		77D4DE34290FD26C00927D82 /* SequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4DE33290FD26C00927D82 /* SequenceView.swift */; };
+		77D4DE34290FD26C00927D82 /* SequenceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4DE33290FD26C00927D82 /* SequenceCardView.swift */; };
+		77D4DE36290FD6AF00927D82 /* CreateSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4DE35290FD6AF00927D82 /* CreateSequenceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +40,8 @@
 		779453EE2907161000DF8E5D /* ActionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCardView.swift; sourceTree = "<group>"; };
 		779453F02907F3A100DF8E5D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		77D4DE31290FD1E800927D82 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
-		77D4DE33290FD26C00927D82 /* SequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceView.swift; sourceTree = "<group>"; };
+		77D4DE33290FD26C00927D82 /* SequenceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceCardView.swift; sourceTree = "<group>"; };
+		77D4DE35290FD6AF00927D82 /* CreateSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSequenceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +101,8 @@
 				774DD2B12900307B000C280C /* MainView.swift */,
 				774DD2C329005757000C280C /* SettingsView.swift */,
 				779453EE2907161000DF8E5D /* ActionCardView.swift */,
-				77D4DE33290FD26C00927D82 /* SequenceView.swift */,
+				77D4DE33290FD26C00927D82 /* SequenceCardView.swift */,
+				77D4DE35290FD6AF00927D82 /* CreateSequenceView.swift */,
 				779453F02907F3A100DF8E5D /* TimerView.swift */,
 			);
 			path = Views;
@@ -194,9 +197,10 @@
 				779453F12907F3A100DF8E5D /* TimerView.swift in Sources */,
 				77345347290977380080A252 /* DB_Manager.swift in Sources */,
 				774DD2C22900466C000C280C /* ViewModel.swift in Sources */,
+				77D4DE36290FD6AF00927D82 /* CreateSequenceView.swift in Sources */,
 				774DD2B22900307B000C280C /* MainView.swift in Sources */,
 				774DD2C0290042CD000C280C /* FooterView.swift in Sources */,
-				77D4DE34290FD26C00927D82 /* SequenceView.swift in Sources */,
+				77D4DE34290FD26C00927D82 /* SequenceCardView.swift in Sources */,
 				774DD2C429005757000C280C /* SettingsView.swift in Sources */,
 				77D4DE32290FD1E800927D82 /* Sequence.swift in Sources */,
 				7757D4252901A218008B30EA /* Action.swift in Sources */,

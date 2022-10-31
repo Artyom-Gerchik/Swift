@@ -15,17 +15,21 @@ class ViewModel: ObservableObject{
         case secondPage
         case settingsPage
         case timerPage
+        case createSequencePage
     }
     
     @Published var state: State
     @Published var fontSize: Double
     @Published var actionsOnMainPage: [Action]
+    @Published var sequenceOnCreatePhase: Sequence = Sequence(name: "", actions: [])
+    @Published var sequences: [Sequence]
     @Published var isPaused: Bool = false
     
-    init(state: State, fontSize: Double, actionsOnMainPage: [Action]) {
+    init(state: State, fontSize: Double, actionsOnMainPage: [Action], sequences: [Sequence]) {
         self.state = state
         self.fontSize = fontSize
         self.actionsOnMainPage = actionsOnMainPage
+        self.sequences = sequences
     }
     
     func changeFontSize(newFontSize: Double){
@@ -54,9 +58,25 @@ class ViewModel: ObservableObject{
         }
     }
     
+    func removeActionFromSequenceCreatePage(idToRemove: UUID){
+        var index: Int = 0
+        for action in sequenceOnCreatePhase.actions{
+            if (action.id == idToRemove){
+                sequenceOnCreatePhase.actions.remove(at: index)
+            }
+            index += 1
+        }
+    }
+    
     func deleteAllActionsOnMainPage(){
         actionsOnMainPage.removeAll()
         DB_Manager().deleteAllActionsOnMainPage()
+    }
+    
+    func addSequence(sequenceName: String, sequenceActions: [Action]){
+        let sequence: Sequence = Sequence(name: sequenceName, actions: sequenceActions)
+        sequences.append(sequence)
+        
     }
     
 }

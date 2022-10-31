@@ -28,7 +28,13 @@ extension MainView: View {
                 FooterView(vm: vm).padding(.bottom)
             }else if(vm.state == ViewModel.State.secondPage){
                 HeaderView(vm: vm)
-                Spacer()
+                List{
+                    ForEach(vm.sequences, id: \.self){
+                        sequence in
+                        SequenceCardView( sequenceName: sequence.name, bgColor: sequence.bgColor)
+                        
+                    }//.onMove(perform: move)
+                }
                 FooterView(vm: vm).padding(.bottom)
             }else if(vm.state == ViewModel.State.settingsPage){
                 HeaderView(vm: vm)
@@ -40,6 +46,14 @@ extension MainView: View {
                 Spacer()
                 TimerView(vm:vm, actionsForViewTimer: vm.actionsOnMainPage, actionsForViewText: vm.actionsOnMainPage)
                 Spacer()
+            }
+            else if(vm.state == ViewModel.State.createSequencePage){
+                HeaderView(vm: vm)
+                Spacer()
+                CreateSequenceView(vm: vm)
+                Spacer()
+                Spacer()
+                //FooterView(vm: vm).padding(.bottom)
             }
         }.preferredColorScheme(isDarkMode ? .dark : .light)
             .onAppear(perform: {
@@ -65,6 +79,6 @@ extension MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(vm:ViewModel(state: ViewModel.State.mainPage,fontSize: 24, actionsOnMainPage: []))
+        MainView(vm:ViewModel(state: ViewModel.State.createSequencePage,fontSize: 24, actionsOnMainPage: [], sequences: []))
     }
 }
