@@ -21,8 +21,6 @@ class ViewModel: ObservableObject{
     @Published var fontSize: Double
     @Published var actionsOnMainPage: [Action]
     @Published var isPaused: Bool = false
-    //@Environment(\.colorScheme) var colorScheme
-    //@Published var preferredColorScheme: ColorScheme? = nil
     
     init(state: State, fontSize: Double, actionsOnMainPage: [Action]) {
         self.state = state
@@ -35,8 +33,30 @@ class ViewModel: ObservableObject{
     }
     
     func addActionToMainPage(actionName: String, actionDescription: String, actionDuration: Int, actionImageName: String){
-        var action: Action = Action(name: actionName, description: actionDescription, duration: 10, imageName: actionImageName)
+        let action: Action = Action(name: actionName, description: actionDescription, duration: 10, imageName: actionImageName)
         actionsOnMainPage.append(action)
+        
+        DB_Manager().addActionOnMainPage(idValue: action.id,
+                                         nameValue: action.name,
+                                         descriptionValue: action.description,
+                                         durationValue: Double(action.duration),
+                                         imageNameValue: action.imageName)
+    }
+    
+    func removeActionFromMainPage(idToRemove: UUID){
+        var index: Int = 0
+        for action in actionsOnMainPage{
+            if (action.id == idToRemove){
+                actionsOnMainPage.remove(at: index)
+                DB_Manager().deleteOneActionOnMainPage(idToDelete: idToRemove)
+            }
+            index += 1
+        }
+    }
+    
+    func deleteAllActionsOnMainPage(){
+        actionsOnMainPage.removeAll()
+        DB_Manager().deleteAllActionsOnMainPage()
     }
     
 }

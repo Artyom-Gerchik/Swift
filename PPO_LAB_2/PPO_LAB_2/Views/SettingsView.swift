@@ -7,12 +7,16 @@
 
 import SwiftUI
 
-struct SettingsView: View {
+struct SettingsView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    @State var test: Double!
+    
     @State private var showingAlert: Bool = false
+}
+
+extension SettingsView: View {
     var body: some View {
-        
         VStack{
             List{
                 HStack{
@@ -31,7 +35,6 @@ struct SettingsView: View {
                         
                     })
                     .accentColor(Color.primary)
-                    //.buttonStyle(.borderedProminent)
                     .alert("Font Size", isPresented: $showingAlert) {
                         Button(action: {
                             vm.changeFontSize(newFontSize: 36)
@@ -56,6 +59,12 @@ struct SettingsView: View {
                         })
                         Button("Cancel") { }
                     }
+                    .onAppear(perform: {
+                        test = vm.fontSize
+                    })
+                    .onDisappear(perform: {
+                        DB_Manager().updateViewModel(fontSizeToFind: test, fontSizeValue: vm.fontSize)
+                    })
                 }
                 HStack{
                     Toggle("Dark Mode", isOn: $isDarkMode.animation())

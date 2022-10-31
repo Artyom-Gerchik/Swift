@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct HeaderView: View {
-    
+struct HeaderView{
     @ObservedObject var vm: ViewModel
-    
+}
+
+extension HeaderView: View {
     var body: some View {
         if(vm.state == ViewModel.State.mainPage){
             HStack{
@@ -47,9 +48,9 @@ struct HeaderView: View {
                 Spacer()
                 
                 Button(action: {
-                    //
+                    vm.deleteAllActionsOnMainPage()
                 }, label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "trash")
                         .font(.system(size:vm.fontSize, weight: .regular))
                 }).accentColor(Color.primary)
             }.padding()
@@ -149,7 +150,6 @@ struct HeaderView: View {
                 }).accentColor(Color.primary)
             }.padding()
         }
-        
     }
 }
 

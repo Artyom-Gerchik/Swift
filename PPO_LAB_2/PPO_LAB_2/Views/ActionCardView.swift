@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-struct ActionCardView: View {
+struct ActionCardView{
     @ObservedObject var vm: ViewModel
-    
     @AppStorage("isDarkMode") private var isDarkMode = false
     
+    @State var actionId: UUID
     @State var actionName: String = ""
     @State var actionDescription: String = ""
     @State var actionDuration: Int = 0
     @State var actionImageName : String = ""
-    
+}
+
+extension ActionCardView: View {
     var body: some View {
         ZStack{
             if(vm.fontSize == 12){
@@ -38,19 +40,21 @@ struct ActionCardView: View {
                     .padding()
                     .font(.system(size:vm.fontSize, weight: .regular))
                     .foregroundColor(isDarkMode ? Color.black : Color.white)
+                    .frame(width: 50)
                 if(vm.fontSize == 12){
                     Divider()
                         .frame(height: 80)
                         .font(.system(size:vm.fontSize, weight: .regular))
-                        .foregroundColor(isDarkMode ? Color.black : Color.white)
+                        .overlay(isDarkMode ? Color.black : Color.white)
                 }else{
                     Divider()
                         .frame(height: 100)
                         .font(.system(size:vm.fontSize, weight: .regular))
-                        .foregroundColor(isDarkMode ? Color.black : Color.white)
+                        .overlay(isDarkMode ? Color.black : Color.white)
                 }
                 
                 Spacer()
+                
                 HStack{
                     VStack{
                         if(vm.fontSize == 36){
@@ -71,24 +75,26 @@ struct ActionCardView: View {
                                 "",
                                 text: $actionDescription
                             )
+                            .onSubmit {
+                                DB_Manager().updateActionDescriptionOnMainPage(idToUpdate: actionId, newDesription: actionDescription)
+                            }
                             .multilineTextAlignment(.center)
                             .foregroundColor(isDarkMode ? Color.black : Color.white)
                         }
-                        //.foregroundColor(isDarkMode ? Color.black : Color.white)
-                        
-                        //.font(.system(size:vm.fontSize, weight: .regular))
-                        
                         
                         HStack{
                             Button(action: {
-                                actionDuration -= 1
+                                withAnimation(.easeIn(duration: 0.25)) {
+                                    actionDuration -= 1
+                                    DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                }
                             }, label: {
                                 if(vm.fontSize == 36){
-                                    Image(systemName: "minus")
+                                    Image(systemName: "minus.square")
                                         .font(.system(size: 24, weight: .regular))
                                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                                 }else{
-                                    Image(systemName: "minus")
+                                    Image(systemName: "minus.square")
                                         .font(.system(size: vm.fontSize, weight: .regular))
                                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                                 }
@@ -108,14 +114,17 @@ struct ActionCardView: View {
                             }
                             
                             Button(action: {
-                                actionDuration += 1
+                                withAnimation(.easeIn(duration: 0.25)) {
+                                    actionDuration += 1
+                                    DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                }
                             }, label: {
                                 if(vm.fontSize == 36){
-                                    Image(systemName: "plus")
+                                    Image(systemName: "plus.square")
                                         .font(.system(size: 24, weight: .regular))
                                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                                 }else{
-                                    Image(systemName: "plus")
+                                    Image(systemName: "plus.square")
                                         .font(.system(size: vm.fontSize, weight: .regular))
                                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                                 }
@@ -124,19 +133,34 @@ struct ActionCardView: View {
                             .buttonStyle(PlainButtonStyle())
                         }
                     }
+                    
                     Spacer()
-                    Image(systemName: "arrow.up.and.down")
-                        .font(.system(size:vm.fontSize, weight: .regular))
-                        .foregroundColor(isDarkMode ? Color.black : Color.white)
-                        .padding()
+                    VStack{
+                        Button(action: {
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                vm.removeActionFromMainPage(idToRemove: actionId)
+                            }
+                        }, label: {
+                            Image(systemName: "xmark")
+                                .font(.system(size:vm.fontSize, weight: .regular))
+                                .foregroundColor(isDarkMode ? Color.black : Color.white)
+                                .padding()
+                        })
+                        .buttonStyle(PlainButtonStyle())
+
+                        Image(systemName: "arrow.up.and.down")
+                            .font(.system(size:vm.fontSize, weight: .regular))
+                            .foregroundColor(isDarkMode ? Color.black : Color.white)
+                            .padding()
+                    }
                 }
             }
         }.padding()
     }
 }
 
-struct ActionCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ActionCardView(vm:ViewModel(state: ViewModel.State.mainPage,fontSize: 24, actionsOnMainPage: []))
-    }
-}
+//struct ActionCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ActionCardView(vm:ViewModel(state: ViewModel.State.mainPage,fontSize: 24, actionsOnMainPage: []))
+//    }
+//}

@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-struct TimerView: View {
-    @ObservedObject var vm: ViewModel
-    
-    //@State var timeRemaining = 10
+struct TimerView{
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @ObservedObject var vm: ViewModel
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    
     @State var actionsForViewTimer: [Action]
     @State var actionsForViewText: [Action]
     @State var currentDuration: Int = 0
-    @AppStorage("isDarkMode") private var isDarkMode = false
-    
-    //@State var index: Int = 0
-    
-    
+}
+
+extension TimerView: View {
     var body: some View {
         VStack{
             if(actionsForViewTimer.count > 0){
@@ -41,7 +40,6 @@ struct TimerView: View {
                                 }else if(!vm.isPaused){
                                     actionsForViewTimer.removeFirst()
                                     actionsForViewText.removeFirst()
-                                    //index += 1
                                 }
                             }
                         
@@ -70,22 +68,11 @@ struct TimerView: View {
             }else{
                 ZStack{
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(.gray).padding()
+                        .fill(isDarkMode ? Color.white : Color.black).padding()
                     Text("Finish!")
                         .font(.system(size: 70, weight: .regular))
+                        .foregroundColor(isDarkMode ? Color.black : Color.white)
                 }
-                //            }
-                //            Spacer()
-                //            ScrollView{
-                //                ForEach(actionsForViewText, id: \.self){
-                //                    action in
-                //                    HStack{
-                //                        Text(action.name)
-                //                        Text(String(action.duration))
-                //                    }
-                //
-                //                }
-                //            }
             }
         }
     }

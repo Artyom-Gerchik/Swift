@@ -11,7 +11,8 @@ import SwiftUI
 struct PPO_LAB_2App: App {
     var body: some Scene {
         WindowGroup {
-            MainView(vm:ViewModel(state: ViewModel.State.mainPage,fontSize: 24, actionsOnMainPage: []))
+            MainView(vm:ViewModel(state: ViewModel.State.mainPage, fontSize: 24, actionsOnMainPage: []))
+            
         }
     }
 }

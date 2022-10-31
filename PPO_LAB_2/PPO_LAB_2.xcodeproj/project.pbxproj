@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77345345290974880080A252 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 77345344290974880080A252 /* SQLite */; };
+		77345347290977380080A252 /* DB_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77345346290977380080A252 /* DB_Manager.swift */; };
 		774DD2B02900307B000C280C /* PPO_LAB_2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774DD2AF2900307B000C280C /* PPO_LAB_2App.swift */; };
 		774DD2B22900307B000C280C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774DD2B12900307B000C280C /* MainView.swift */; };
 		774DD2B42900307C000C280C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 774DD2B32900307C000C280C /* Assets.xcassets */; };
@@ -18,10 +20,12 @@
 		7757D4252901A218008B30EA /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7757D4242901A218008B30EA /* Action.swift */; };
 		779453EF2907161000DF8E5D /* ActionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779453EE2907161000DF8E5D /* ActionCardView.swift */; };
 		779453F12907F3A100DF8E5D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779453F02907F3A100DF8E5D /* TimerView.swift */; };
-		77DAC6552901AFE5008B441C /* ActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DAC6542901AFE5008B441C /* ActionsView.swift */; };
+		77D4DE32290FD1E800927D82 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4DE31290FD1E800927D82 /* Sequence.swift */; };
+		77D4DE34290FD26C00927D82 /* SequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4DE33290FD26C00927D82 /* SequenceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77345346290977380080A252 /* DB_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Manager.swift; sourceTree = "<group>"; };
 		774DD2AC2900307B000C280C /* PPO_LAB_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPO_LAB_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		774DD2AF2900307B000C280C /* PPO_LAB_2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPO_LAB_2App.swift; sourceTree = "<group>"; };
 		774DD2B12900307B000C280C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -34,7 +38,8 @@
 		7757D4242901A218008B30EA /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		779453EE2907161000DF8E5D /* ActionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCardView.swift; sourceTree = "<group>"; };
 		779453F02907F3A100DF8E5D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		77DAC6542901AFE5008B441C /* ActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsView.swift; sourceTree = "<group>"; };
+		77D4DE31290FD1E800927D82 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		77D4DE33290FD26C00927D82 /* SequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77345345290974880080A252 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,8 +98,8 @@
 				774DD2BF290042CD000C280C /* FooterView.swift */,
 				774DD2B12900307B000C280C /* MainView.swift */,
 				774DD2C329005757000C280C /* SettingsView.swift */,
-				77DAC6542901AFE5008B441C /* ActionsView.swift */,
 				779453EE2907161000DF8E5D /* ActionCardView.swift */,
+				77D4DE33290FD26C00927D82 /* SequenceView.swift */,
 				779453F02907F3A100DF8E5D /* TimerView.swift */,
 			);
 			path = Views;
@@ -103,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				7757D4242901A218008B30EA /* Action.swift */,
+				77D4DE31290FD1E800927D82 /* Sequence.swift */,
+				77345346290977380080A252 /* DB_Manager.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -123,6 +131,9 @@
 			dependencies = (
 			);
 			name = PPO_LAB_2;
+			packageProductDependencies = (
+				77345344290974880080A252 /* SQLite */,
+			);
 			productName = PPO_LAB_2;
 			productReference = 774DD2AC2900307B000C280C /* PPO_LAB_2.app */;
 			productType = "com.apple.product-type.application";
@@ -151,6 +162,9 @@
 				Base,
 			);
 			mainGroup = 774DD2A32900307B000C280C;
+			packageReferences = (
+				77345343290974880080A252 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			productRefGroup = 774DD2AD2900307B000C280C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -178,11 +192,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				779453F12907F3A100DF8E5D /* TimerView.swift in Sources */,
-				77DAC6552901AFE5008B441C /* ActionsView.swift in Sources */,
+				77345347290977380080A252 /* DB_Manager.swift in Sources */,
 				774DD2C22900466C000C280C /* ViewModel.swift in Sources */,
 				774DD2B22900307B000C280C /* MainView.swift in Sources */,
 				774DD2C0290042CD000C280C /* FooterView.swift in Sources */,
+				77D4DE34290FD26C00927D82 /* SequenceView.swift in Sources */,
 				774DD2C429005757000C280C /* SettingsView.swift in Sources */,
+				77D4DE32290FD1E800927D82 /* Sequence.swift in Sources */,
 				7757D4252901A218008B30EA /* Action.swift in Sources */,
 				774DD2BE290033A7000C280C /* HeaderView.swift in Sources */,
 				774DD2B02900307B000C280C /* PPO_LAB_2App.swift in Sources */,
@@ -387,6 +403,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		77345343290974880080A252 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		77345344290974880080A252 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77345343290974880080A252 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 774DD2A42900307B000C280C /* Project object */;
 }
