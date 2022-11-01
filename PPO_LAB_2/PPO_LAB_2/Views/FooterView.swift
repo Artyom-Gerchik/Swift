@@ -24,7 +24,7 @@ extension FooterView: View {
                 Spacer()
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {
-                        vm.state = ViewModel.State.timerPage
+                        vm.state = ViewModel.State.mainTimerPage
                         vm.isPaused = false
                     }
                 }, label: {

@@ -31,7 +31,7 @@ extension MainView: View {
                 List{
                     ForEach(vm.sequences, id: \.self){
                         sequence in
-                        SequenceCardView( sequenceName: sequence.name, bgColor: sequence.bgColor)
+                        SequenceCardView(vm: vm,sequenceId: sequence.id, sequenceName: sequence.name, sequenceActions: sequence.actions, bgColor: sequence.bgColor)
                         
                     }//.onMove(perform: move)
                 }
@@ -41,10 +41,23 @@ extension MainView: View {
                 Spacer()
                 SettingsView(vm: vm)
                 Spacer()
-            }else if (vm.state == ViewModel.State.timerPage){
+            }else if (vm.state == ViewModel.State.mainTimerPage){
                 HeaderView(vm: vm)
                 Spacer()
                 TimerView(vm:vm, actionsForViewTimer: vm.actionsOnMainPage, actionsForViewText: vm.actionsOnMainPage)
+                Spacer()
+            }
+            else if (vm.state == ViewModel.State.secondTimerPage){
+                
+                
+                HeaderView(vm: vm)
+                Spacer()
+                //                ForEach(vm.sequences, id: \.self){
+                var sequence = vm.sequences.first(where: {$0.id == vm.sequenceIdForTimer}) //in
+                //if(sequence.id == vm.sequenceIdForTimer){
+                TimerView(vm: vm, actionsForViewTimer: sequence!.actions, actionsForViewText: sequence!.actions)
+                //}
+                //}//.onMove(perform: move)
                 Spacer()
             }
             else if(vm.state == ViewModel.State.createSequencePage){

@@ -14,7 +14,8 @@ class ViewModel: ObservableObject{
         case mainPage
         case secondPage
         case settingsPage
-        case timerPage
+        case mainTimerPage
+        case secondTimerPage
         case createSequencePage
     }
     
@@ -24,6 +25,7 @@ class ViewModel: ObservableObject{
     @Published var sequenceOnCreatePhase: Sequence = Sequence(name: "", actions: [])
     @Published var sequences: [Sequence]
     @Published var isPaused: Bool = false
+    @Published var sequenceIdForTimer: UUID!
     
     init(state: State, fontSize: Double, actionsOnMainPage: [Action], sequences: [Sequence]) {
         self.state = state
