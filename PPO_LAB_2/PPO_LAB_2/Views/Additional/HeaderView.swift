@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HeaderView{
     @ObservedObject var vm: ViewModel
+    @AppStorage("isDarkMode") private var isDarkMode = false
 }
 
 extension HeaderView: View {
@@ -90,7 +91,7 @@ extension HeaderView: View {
                 
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {
-                        vm.state = ViewModel.State.secondPage
+                        vm.state = ViewModel.State.sequencesUnionPage
                     }
                 }, label: {
                     Image(systemName: "link.badge.plus")
@@ -127,7 +128,7 @@ extension HeaderView: View {
                 }, label: {
                     Image(systemName: "plus")
                         .font(.system(size:vm.fontSize, weight: .regular))
-                }).accentColor(Color.white)
+                }).accentColor(isDarkMode ? Color.black : Color.white)
             }.padding()
         }else if (vm.state == ViewModel.State.mainTimerPage){
             HStack{
@@ -174,6 +175,34 @@ extension HeaderView: View {
                 }).accentColor(Color.primary)
             }.padding()
         }else if (vm.state == ViewModel.State.createSequencePage){
+            HStack{
+                Button(action: {
+                    withAnimation(.easeIn(duration: 0.25)) {
+                        vm.state = ViewModel.State.secondPage
+                    }
+                }, label: {
+                    Image(systemName: "chevron.backward")
+                        .font(.system(size:vm.fontSize, weight: .regular))
+                }).accentColor(Color.primary)
+                
+                Spacer()
+                
+            }.padding()
+        }else if(vm.state == ViewModel.State.sequencesUnionPage){
+            HStack{
+                Button(action: {
+                    withAnimation(.easeIn(duration: 0.25)) {
+                        vm.state = ViewModel.State.secondPage
+                    }
+                }, label: {
+                    Image(systemName: "chevron.backward")
+                        .font(.system(size:vm.fontSize, weight: .regular))
+                }).accentColor(Color.primary)
+                
+                Spacer()
+                
+            }.padding()
+        }else if(vm.state == ViewModel.State.editSequencePage){
             HStack{
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {

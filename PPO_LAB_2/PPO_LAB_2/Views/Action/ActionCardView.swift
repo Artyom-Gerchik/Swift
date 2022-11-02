@@ -76,7 +76,9 @@ extension ActionCardView: View {
                                 text: $actionDescription
                             )
                             .onSubmit {
-                                DB_Manager().updateActionDescriptionOnMainPage(idToUpdate: actionId, newDesription: actionDescription)
+                                if(vm.state == ViewModel.State.mainPage){
+                                    DB_Manager().updateActionDescriptionOnMainPage(idToUpdate: actionId, newDesription: actionDescription)
+                                }
                             }
                             .multilineTextAlignment(.center)
                             .foregroundColor(isDarkMode ? Color.black : Color.white)
@@ -86,7 +88,9 @@ extension ActionCardView: View {
                             Button(action: {
                                 withAnimation(.easeIn(duration: 0.25)) {
                                     actionDuration -= 1
-                                    DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                    if(vm.state == ViewModel.State.mainPage){
+                                        DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                    }
                                 }
                             }, label: {
                                 if(vm.fontSize == 36){
@@ -116,8 +120,9 @@ extension ActionCardView: View {
                             Button(action: {
                                 withAnimation(.easeIn(duration: 0.25)) {
                                     actionDuration += 1
-                                    DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
-                                }
+                                    if(vm.state == ViewModel.State.mainPage){
+                                        DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                    }                                }
                             }, label: {
                                 if(vm.fontSize == 36){
                                     Image(systemName: "plus.square")

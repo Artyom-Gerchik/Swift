@@ -14,7 +14,7 @@ struct CreateSequenceView{
     @State var isExpanded: Bool = false
     @State var isMainMenuActive : Bool = false
     @State var bgColor: Color = Color.green
-    @State var newSequence: Sequence = Sequence(name: "", actions: [])
+    @State var newSequence: Sequence = Sequence(name: "", actions: [], bgColor: "")
     
     func move(from source: IndexSet, to destination: Int) {
         vm.sequenceOnCreatePhase.actions.move(fromOffsets: source, toOffset: destination)
@@ -57,10 +57,14 @@ extension CreateSequenceView: View {
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {
                         newSequence = vm.sequenceOnCreatePhase
-                        vm.sequenceOnCreatePhase = Sequence(name: "", actions: [])
-                        newSequence.bgColor = bgColor.toHex()
-                        vm.sequences.append(newSequence)
+                        
+                        vm.addSequence(sequenceName: newSequence.name, sequenceActions: newSequence.actions, bgColor: bgColor.toHex()!)
+                        //newSequence.bgColor = bgColor.toHex()!
+                        //vm.sequences.append(newSequence)
                         vm.state = ViewModel.State.secondPage
+                        
+                        vm.sequenceOnCreatePhase = Sequence(name: "", actions: [], bgColor: "''")
+                        
                     }
                 }, label: {
                     Text("OK")

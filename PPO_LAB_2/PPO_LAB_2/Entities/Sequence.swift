@@ -12,11 +12,12 @@ struct Sequence: Hashable{
     var id: UUID = UUID()
     var name: String = ""
     var actions: [Action] = []
-    var bgColor: String!
+    var bgColor: String = ""
     
-    init(name: String, actions: [Action]) {
+    init(name: String, actions: [Action], bgColor: String) {
         self.name = name
         self.actions = actions
+        self.bgColor = bgColor
     }
     
 }

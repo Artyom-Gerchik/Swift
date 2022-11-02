@@ -24,6 +24,18 @@ extension MainView: View {
                         
                     }.onMove(perform: move)
                 }
+                .onAppear(perform: {
+                    if(DB_Manager().checkIfDbEmpty()){
+                        print("GETTING VIEWMODEL")
+                        let tmpVM = DB_Manager().getViewModel()
+                        vm.fontSize = tmpVM.fontSize
+                        vm.actionsOnMainPage = tmpVM.actionsOnMainPage
+                        
+                    }else{
+                        print("CREATING NEW VIEWMODEL")
+                        DB_Manager().addViewModel(fontSizeValue: vm.fontSize)
+                    }
+                })
                 
                 FooterView(vm: vm).padding(.bottom)
             }else if(vm.state == ViewModel.State.secondPage){
@@ -45,6 +57,18 @@ extension MainView: View {
                 HeaderView(vm: vm)
                 Spacer()
                 TimerView(vm:vm, actionsForViewTimer: vm.actionsOnMainPage, actionsForViewText: vm.actionsOnMainPage)
+//                    .onAppear(perform: {
+//                        if(DB_Manager().checkIfDbEmpty()){
+//                            print("GETTING VIEWMODEL")
+//                            let tmpVM = DB_Manager().getViewModel()
+//                            vm.fontSize = tmpVM.fontSize
+//                            vm.actionsOnMainPage = tmpVM.actionsOnMainPage
+//
+//                        }else{
+//                            print("CREATING NEW VIEWMODEL")
+//                            DB_Manager().addViewModel(fontSizeValue: vm.fontSize)
+//                        }
+//                    })
                 Spacer()
             }
             else if (vm.state == ViewModel.State.secondTimerPage){
@@ -52,12 +76,8 @@ extension MainView: View {
                 
                 HeaderView(vm: vm)
                 Spacer()
-                //                ForEach(vm.sequences, id: \.self){
-                var sequence = vm.sequences.first(where: {$0.id == vm.sequenceIdForTimer}) //in
-                //if(sequence.id == vm.sequenceIdForTimer){
+                let sequence = vm.sequences.first(where: {$0.id == vm.sequenceIdForTimer})
                 TimerView(vm: vm, actionsForViewTimer: sequence!.actions, actionsForViewText: sequence!.actions)
-                //}
-                //}//.onMove(perform: move)
                 Spacer()
             }
             else if(vm.state == ViewModel.State.createSequencePage){
@@ -67,21 +87,17 @@ extension MainView: View {
                 Spacer()
                 Spacer()
                 //FooterView(vm: vm).padding(.bottom)
+            }else if(vm.state == ViewModel.State.sequencesUnionPage){
+                HeaderView(vm: vm)
+                SequencesUnionView(vm: vm, checks: [])
             }
-        }.preferredColorScheme(isDarkMode ? .dark : .light)
-            .onAppear(perform: {
-                if(DB_Manager().checkIfDbEmpty()){
-                    print("GETTING VIEWMODEL")
-                    let tmpVM = DB_Manager().getViewModel()
-                    vm.fontSize = tmpVM.fontSize
-                    vm.actionsOnMainPage = tmpVM.actionsOnMainPage
-                    
-                }else{
-                    print("CREATING NEW VIEWMODEL")
-                    DB_Manager().addViewModel(fontSizeValue: vm.fontSize)
-                }
+            else if(vm.state == ViewModel.State.editSequencePage){
+                HeaderView(vm: vm)
+                EditSequenceView(vm: vm)
             }
-            )
+        }
+        .preferredColorScheme(isDarkMode ? .dark : .light)
+        
     }
     
     func move(from source: IndexSet, to destination: Int) {

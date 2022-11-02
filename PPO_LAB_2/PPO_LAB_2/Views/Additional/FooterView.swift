@@ -24,8 +24,21 @@ extension FooterView: View {
                 Spacer()
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {
+                        
+                        if(DB_Manager().checkIfDbEmpty()){
+                            print("GETTING VIEWMODEL")
+                            let tmpVM = DB_Manager().getViewModel()
+                            vm.fontSize = tmpVM.fontSize
+                            vm.actionsOnMainPage = tmpVM.actionsOnMainPage
+                            
+                        }else{
+                            print("CREATING NEW VIEWMODEL")
+                            DB_Manager().addViewModel(fontSizeValue: vm.fontSize)
+                        }
+                        
                         vm.state = ViewModel.State.mainTimerPage
                         vm.isPaused = false
+                        
                     }
                 }, label: {
                     Text("START")

@@ -18,6 +18,7 @@
 		774DD2C0290042CD000C280C /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774DD2BF290042CD000C280C /* FooterView.swift */; };
 		774DD2C22900466C000C280C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774DD2C12900466C000C280C /* ViewModel.swift */; };
 		774DD2C429005757000C280C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774DD2C329005757000C280C /* SettingsView.swift */; };
+		774FE1332912A16500BF7FE5 /* EditSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774FE1322912A16500BF7FE5 /* EditSequenceView.swift */; };
 		7757D4252901A218008B30EA /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7757D4242901A218008B30EA /* Action.swift */; };
 		779453EF2907161000DF8E5D /* ActionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779453EE2907161000DF8E5D /* ActionCardView.swift */; };
 		779453F12907F3A100DF8E5D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779453F02907F3A100DF8E5D /* TimerView.swift */; };
@@ -38,6 +39,7 @@
 		774DD2BF290042CD000C280C /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		774DD2C12900466C000C280C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		774DD2C329005757000C280C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		774FE1322912A16500BF7FE5 /* EditSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSequenceView.swift; sourceTree = "<group>"; };
 		7757D4242901A218008B30EA /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		779453EE2907161000DF8E5D /* ActionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCardView.swift; sourceTree = "<group>"; };
 		779453F02907F3A100DF8E5D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -95,17 +97,42 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		7757D4222901A135008B30EA /* Views */ = {
+		774FE1342912A17000BF7FE5 /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				77D4DE33290FD26C00927D82 /* SequenceCardView.swift */,
+				77D4DE35290FD6AF00927D82 /* CreateSequenceView.swift */,
+				7742356D2911561A00F391FB /* SequencesUnionView.swift */,
+				774FE1322912A16500BF7FE5 /* EditSequenceView.swift */,
+			);
+			path = Sequence;
+			sourceTree = "<group>";
+		};
+		774FE1352912A18800BF7FE5 /* Additional */ = {
 			isa = PBXGroup;
 			children = (
 				774DD2BD290033A7000C280C /* HeaderView.swift */,
 				774DD2BF290042CD000C280C /* FooterView.swift */,
+			);
+			path = Additional;
+			sourceTree = "<group>";
+		};
+		774FE1362912A19900BF7FE5 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				779453EE2907161000DF8E5D /* ActionCardView.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		7757D4222901A135008B30EA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				774FE1362912A19900BF7FE5 /* Action */,
+				774FE1352912A18800BF7FE5 /* Additional */,
+				774FE1342912A17000BF7FE5 /* Sequence */,
 				774DD2B12900307B000C280C /* MainView.swift */,
 				774DD2C329005757000C280C /* SettingsView.swift */,
-				779453EE2907161000DF8E5D /* ActionCardView.swift */,
-				77D4DE33290FD26C00927D82 /* SequenceCardView.swift */,
-				77D4DE35290FD6AF00927D82 /* CreateSequenceView.swift */,
-				7742356D2911561A00F391FB /* SequencesUnionView.swift */,
 				779453F02907F3A100DF8E5D /* TimerView.swift */,
 			);
 			path = Views;
@@ -197,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				774FE1332912A16500BF7FE5 /* EditSequenceView.swift in Sources */,
 				779453F12907F3A100DF8E5D /* TimerView.swift in Sources */,
 				77345347290977380080A252 /* DB_Manager.swift in Sources */,
 				774DD2C22900466C000C280C /* ViewModel.swift in Sources */,
