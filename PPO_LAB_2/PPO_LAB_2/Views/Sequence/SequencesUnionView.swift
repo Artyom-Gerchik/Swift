@@ -10,6 +10,7 @@ import SwiftUI
 struct SequencesUnionView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    
     @State var checks: [Bool] = []
     @State var checkId: Int = 0
     @State var idsForUnion: [UUID] = []
@@ -70,9 +71,3 @@ extension SequencesUnionView: View {
         }.padding()
     }
 }
-
-//struct SequencesUnionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SequencesUnionView()
-//    }
-//}

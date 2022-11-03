@@ -81,14 +81,14 @@ extension TimerView: View {
     }
 }
 
-struct TimerView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimerView(vm:ViewModel(state: ViewModel.State.mainPage,fontSize: 24, actionsOnMainPage: [], sequences: []), actionsForViewTimer: [
-            Action(name: "test1", description: "tt", duration: 10, imageName: "sofa"),
-            Action(name: "test2", description: "tt", duration: 11, imageName: "sofa"),
-            Action(name: "test3", description: "tt", duration: 12, imageName: "sofa")], actionsForViewText: [
-                Action(name: "test1", description: "tt", duration: 10, imageName: "sofa"),
-                Action(name: "test2", description: "tt", duration: 11, imageName: "sofa"),
-                Action(name: "test3", description: "tt", duration: 12, imageName: "sofa")])
-    }
-}
+//struct TimerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TimerView(vm:ViewModel(state: ViewModel.State.mainPage,fontSize: 24, actionsOnMainPage: [], sequences: []), actionsForViewTimer: [
+//            Action(name: "test1", description: "tt", duration: 10, imageName: "sofa"),
+//            Action(name: "test2", description: "tt", duration: 11, imageName: "sofa"),
+//            Action(name: "test3", description: "tt", duration: 12, imageName: "sofa")], actionsForViewText: [
+//                Action(name: "test1", description: "tt", duration: 10, imageName: "sofa"),
+//                Action(name: "test2", description: "tt", duration: 11, imageName: "sofa"),
+//                Action(name: "test3", description: "tt", duration: 12, imageName: "sofa")])
+//    }
+//}

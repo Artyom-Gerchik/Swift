@@ -82,7 +82,6 @@
 				774DD2AF2900307B000C280C /* PPO_LAB_2App.swift */,
 				7757D4232901A157008B30EA /* Entities */,
 				7757D4222901A135008B30EA /* Views */,
-				774DD2C12900466C000C280C /* ViewModel.swift */,
 				774DD2B32900307C000C280C /* Assets.xcassets */,
 				774DD2B52900307C000C280C /* Preview Content */,
 			);
@@ -113,6 +112,8 @@
 			children = (
 				774DD2BD290033A7000C280C /* HeaderView.swift */,
 				774DD2BF290042CD000C280C /* FooterView.swift */,
+				774DD2C329005757000C280C /* SettingsView.swift */,
+				779453F02907F3A100DF8E5D /* TimerView.swift */,
 			);
 			path = Additional;
 			sourceTree = "<group>";
@@ -132,8 +133,6 @@
 				774FE1352912A18800BF7FE5 /* Additional */,
 				774FE1342912A17000BF7FE5 /* Sequence */,
 				774DD2B12900307B000C280C /* MainView.swift */,
-				774DD2C329005757000C280C /* SettingsView.swift */,
-				779453F02907F3A100DF8E5D /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,9 +140,10 @@
 		7757D4232901A157008B30EA /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				774DD2C12900466C000C280C /* ViewModel.swift */,
+				77345346290977380080A252 /* DB_Manager.swift */,
 				7757D4242901A218008B30EA /* Action.swift */,
 				77D4DE31290FD1E800927D82 /* Sequence.swift */,
-				77345346290977380080A252 /* DB_Manager.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";

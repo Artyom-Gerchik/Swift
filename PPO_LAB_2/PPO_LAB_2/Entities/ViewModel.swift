@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 class ViewModel: ObservableObject{
-    
     enum State{
         case mainPage
         case secondPage
@@ -42,7 +41,7 @@ class ViewModel: ObservableObject{
     }
     
     func addActionToMainPage(actionName: String, actionDescription: String, actionDuration: Int, actionImageName: String){
-        let action: Action = Action(name: actionName, description: actionDescription, duration: 10, imageName: actionImageName)
+        let action: Action = Action(name: actionName, description: actionDescription, duration: 10, imageName: actionImageName,sequenceId: UUID())
         actionsOnMainPage.append(action)
         
         DB_Manager().addActionOnMainPage(idValue: action.id,
@@ -81,6 +80,7 @@ class ViewModel: ObservableObject{
     func addSequence(sequenceName: String, sequenceActions: [Action], bgColor: String){
         let sequence: Sequence = Sequence(name: sequenceName, actions: sequenceActions, bgColor: bgColor)
         sequences.append(sequence)
+        DB_Manager().addSequence(sequenceToAdd: sequence)
     }
     
     func unionSequences(sequencesIds: [UUID], bgColor: String){
@@ -99,10 +99,9 @@ class ViewModel: ObservableObject{
             newSequence.name.append(sequence.name)
             newSequence.name.append(" + ")
             for action in sequence.actions{
-                let newAction: Action = Action(name: action.name, description: action.description, duration: action.duration, imageName: action.imageName)
+                let newAction: Action = Action(name: action.name, description: action.description, duration: action.duration, imageName: action.imageName, sequenceId: newSequence.id)
                 newSequence.actions.append(newAction)
             }
-            //newSequence.actions += sequence.actions
         }
         addSequence(sequenceName: newSequence.name, sequenceActions: newSequence.actions, bgColor: bgColor)
     }
@@ -123,22 +122,63 @@ class ViewModel: ObservableObject{
                 sequences[i] = updatedSequence
             }
         }
-        
-        //var sequenceForUpdate: Sequence
-        
-        //        sequences.first(where: {$0.id == sequenceIdToEdit})?.name = updatedSequence.name
-        //        sequences.filter({$0.id == sequenceIdToEdit}).first?.actions = updatedSequence.actions
-        //        //sequences.filter({$0.id == sequenceIdToEdit}).first?.name = updatedSequence.name
-        
-        
-        //        for sequence in sequences {
-        //            if(sequence.id == updatedSequence.id){
-        //                sequence.name = updatedSequence.name
-        //
-        //                            }
-        //        }
-        
-        //sequenceForUpdate = updatedSequence
     }
-    
+}
+
+extension Color {
+    init?(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+        
+        var rgb: UInt64 = 0
+        
+        var r: CGFloat = 0.0
+        var g: CGFloat = 0.0
+        var b: CGFloat = 0.0
+        var a: CGFloat = 1.0
+        
+        let length = hexSanitized.count
+        
+        guard Scanner(string: hexSanitized).scanHexInt64(&rgb) else { return nil }
+        
+        if length == 6 {
+            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+            b = CGFloat(rgb & 0x0000FF) / 255.0
+            
+        } else if length == 8 {
+            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
+            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
+            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
+            a = CGFloat(rgb & 0x000000FF) / 255.0
+            
+        } else {
+            return nil
+        }
+        
+        self.init(red: r, green: g, blue: b, opacity: a)
+    }
+}
+
+extension Color {
+    func toHex() -> String? {
+        let uic = UIColor(self)
+        guard let components = uic.cgColor.components, components.count >= 3 else {
+            return nil
+        }
+        let r = Float(components[0])
+        let g = Float(components[1])
+        let b = Float(components[2])
+        var a = Float(1.0)
+        
+        if components.count >= 4 {
+            a = Float(components[3])
+        }
+        
+        if a != Float(1.0) {
+            return String(format: "%02lX%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255), lroundf(a * 255))
+        } else {
+            return String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
+        }
+    }
 }

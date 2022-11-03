@@ -39,6 +39,7 @@ extension HeaderView: View {
                 
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {
+                        
                         vm.state = ViewModel.State.secondPage
                     }
                 }, label: {
@@ -217,11 +218,5 @@ extension HeaderView: View {
                 
             }.padding()
         }
-    }
-}
-
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderView(vm: ViewModel(state: ViewModel.State.mainTimerPage, fontSize: 24, actionsOnMainPage: [], sequences: []))
     }
 }

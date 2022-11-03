@@ -90,6 +90,19 @@ extension ActionCardView: View {
                                     actionDuration -= 1
                                     if(vm.state == ViewModel.State.mainPage){
                                         DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                    }else if(vm.state == ViewModel.State.editSequencePage){
+                                        DB_Manager().updateActionDuration(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                        if(DB_Manager().checkIfDbEmpty()){
+                                            print("GETTING VIEWMODEL")
+                                            let tmpVM = DB_Manager().getViewModel()
+                                            vm.fontSize = tmpVM.fontSize
+                                            vm.actionsOnMainPage = tmpVM.actionsOnMainPage
+                                            vm.sequences = tmpVM.sequences
+                                            
+                                        }else{
+                                            print("CREATING NEW VIEWMODEL")
+                                            DB_Manager().addViewModel(fontSizeValue: vm.fontSize)
+                                        }
                                     }
                                 }
                             }, label: {
@@ -122,7 +135,11 @@ extension ActionCardView: View {
                                     actionDuration += 1
                                     if(vm.state == ViewModel.State.mainPage){
                                         DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
-                                    }                                }
+                                    }else if(vm.state == ViewModel.State.editSequencePage){
+                                        DB_Manager().updateActionDuration(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                    }
+                                    
+                                }
                             }, label: {
                                 if(vm.fontSize == 36){
                                     Image(systemName: "plus.square")
@@ -156,7 +173,7 @@ extension ActionCardView: View {
                                 .padding()
                         })
                         .buttonStyle(PlainButtonStyle())
-
+                        
                         Image(systemName: "arrow.up.and.down")
                             .font(.system(size:vm.fontSize, weight: .regular))
                             .foregroundColor(isDarkMode ? Color.black : Color.white)
@@ -167,9 +184,3 @@ extension ActionCardView: View {
         }.padding()
     }
 }
-
-//struct ActionCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ActionCardView(vm:ViewModel(state: ViewModel.State.mainPage,fontSize: 24, actionsOnMainPage: []))
-//    }
-//}

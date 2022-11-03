@@ -8,7 +8,6 @@
 import Foundation
 
 struct Sequence: Hashable{
-    
     var id: UUID = UUID()
     var name: String = ""
     var actions: [Action] = []
@@ -19,5 +18,4 @@ struct Sequence: Hashable{
         self.actions = actions
         self.bgColor = bgColor
     }
-    
 }

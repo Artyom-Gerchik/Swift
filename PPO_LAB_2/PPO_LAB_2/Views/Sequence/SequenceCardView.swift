@@ -10,6 +10,7 @@ import SwiftUI
 struct SequenceCardView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    
     @State var sequenceId: UUID
     @State var sequenceName: String = ""
     @State var sequenceActions: [Action] = []
@@ -21,13 +22,10 @@ extension SequenceCardView: View {
         ZStack{
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                 .fill(Color(hex: bgColor)!)
-            //.fill(Color.white)
                 .frame(height: 180)
             VStack{
-                //Spacer()
                 HStack{
                     if(vm.state == ViewModel.State.secondPage){
-                        //Spacer()
                         Button(action: {
                             withAnimation(.easeIn(duration: 0.25)) {
                                 vm.sequenceIdToEdit = sequenceId
@@ -75,9 +73,3 @@ extension SequenceCardView: View {
         }.padding([.trailing, .leading])
     }
 }
-
-//struct SequenceCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SequenceCardView(vm: ViewModel(state: ViewModel.State.secondPage,fontSize: 24, actionsOnMainPage: [], sequences: []), sequenceId: UUID())
-//    }
-//}

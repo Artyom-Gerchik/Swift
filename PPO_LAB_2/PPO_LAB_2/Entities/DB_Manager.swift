@@ -21,6 +21,19 @@ class DB_Manager{
     private var duration: Expression<Double>!
     private var imageName : Expression<String>!
     
+    private var sequences: Table!
+    private var seq_id: Expression<UUID>!
+    private var seq_name: Expression<String>!
+    private var seq_bgColor: Expression<String>!
+    
+    private var seqActions: Table!
+    private var seq_action_seq_id: Expression<UUID>!
+    private var seq_action_id: Expression<UUID>!
+    private var seq_action_name: Expression<String>!
+    private var seq_action_description: Expression<String>!
+    private var seq_action_duration: Expression<Double>!
+    private var seq_action_imageName: Expression<String>!
+    
     
     init(){
         do{
@@ -37,6 +50,24 @@ class DB_Manager{
             duration = Expression<Double>("duration")
             imageName = Expression<String>("imageName")
             
+            sequences = Table("sequences")
+            seq_id = Expression<UUID>("seq_id")
+            seq_name = Expression<String>("seq_name")
+            seq_bgColor = Expression<String>("seq_bgColor")
+            
+            seqActions = Table("seq_actions")
+            seq_action_id = Expression<UUID>("seq_action_id")
+            seq_action_seq_id = Expression<UUID>("seq_action_seq_id")
+            seq_action_name = Expression<String>("seq_action_name")
+            seq_action_description = Expression<String>("seq_action_description")
+            seq_action_duration = Expression<Double>("seq_action_duration")
+            seq_action_imageName = Expression<String>("seq_action_imageName")
+            
+            //            UserDefaults.standard.set(false, forKey: "is_db_created")
+            //            try db.run(viewModels.drop())
+            //            try db.run(actionsOnMainPage.drop())
+            
+            
             if(!UserDefaults.standard.bool(forKey: "is_db_created")){
                 
                 try db.run(viewModels.create{ (t) in
@@ -49,6 +80,21 @@ class DB_Manager{
                     t.column(description)
                     t.column(duration)
                     t.column(imageName)
+                })
+                
+                try db.run(sequences.create{ (t) in
+                    t.column(seq_id, primaryKey: true)
+                    t.column(seq_name)
+                    t.column(seq_bgColor)
+                })
+                
+                try db.run(seqActions.create{ (t) in
+                    t.column(seq_action_id, primaryKey: true)
+                    t.column(seq_action_seq_id)
+                    t.column(seq_action_name)
+                    t.column(seq_action_description)
+                    t.column(seq_action_duration)
+                    t.column(seq_action_imageName)
                 })
                 
                 UserDefaults.standard.set(true, forKey: "is_db_created")
@@ -99,6 +145,7 @@ class DB_Manager{
             print(error.localizedDescription)
         }
         viewModelToReturn.actionsOnMainPage = getActionsOnMainPage()
+        viewModelToReturn.sequences = getAllSequences()
         return viewModelToReturn
     }
     
@@ -135,7 +182,8 @@ class DB_Manager{
                 var actionNew: Action = Action(name: action[name],
                                                description: action[description],
                                                duration: Int(action[duration]),
-                                               imageName: action[imageName])
+                                               imageName: action[imageName],
+                                               sequenceId: UUID())
                 
                 actionNew.id = action[id]
                 actionsOnMainPageArray.append(actionNew)
@@ -166,6 +214,26 @@ class DB_Manager{
         }
     }
     
+    public func hardUpdateActions(updatedActions: [Action]){
+        do{
+            try db.run(seqActions.delete())
+            
+            for action in updatedActions {
+                try db.run(seqActions.insert(seq_action_id <- action.id,
+                                             seq_action_seq_id <- action.sequenceId,
+                                             seq_action_name <- action.name,
+                                             seq_action_description <- action.description,
+                                             seq_action_duration <- Double(action.duration),
+                                             seq_action_imageName <- action.imageName))
+            }
+        }catch{
+            print(error.localizedDescription)
+            print(error)
+            print(error.self)
+        }
+    }
+    
+    
     public func deleteOneActionOnMainPage(idToDelete: UUID){
         do{
             let actionToDelete = actionsOnMainPage.filter(id == idToDelete)
@@ -182,6 +250,18 @@ class DB_Manager{
         do{
             let actionToUpdate = actionsOnMainPage.filter(id == idToUpdate)
             try db.run(actionToUpdate.update(duration <- newDuration))
+        }
+        catch{
+            print(error.localizedDescription)
+            print(error)
+            print(error.self)
+        }
+    }
+    
+    public func updateActionDuration(idToUpdate: UUID, newDuration: Double){
+        do{
+            let actionToUpdate = seqActions.filter(seq_action_id == idToUpdate)
+            try db.run(actionToUpdate.update(seq_action_duration <- newDuration))
         }
         catch{
             print(error.localizedDescription)
@@ -210,6 +290,59 @@ class DB_Manager{
             print(error)
             print(error.self)
         }
+    }
+    
+    public func addSequence(sequenceToAdd: Sequence){
+        do{
+            try db.run(sequences.insert(seq_id <- sequenceToAdd.id,
+                                        seq_name <- sequenceToAdd.name,
+                                        seq_bgColor <- sequenceToAdd.bgColor))
+            for action in sequenceToAdd.actions{
+                try db.run(seqActions.insert(seq_action_id <- action.id,
+                                             seq_action_seq_id <- sequenceToAdd.id,
+                                             seq_action_name <- action.name,
+                                             seq_action_description <- action.description,
+                                             seq_action_duration <- Double(action.duration),
+                                             seq_action_imageName <- action.imageName))
+            }
+        }catch{
+            print(error.localizedDescription)
+            print(error)
+            print(error.self)
+        }
+    }
+    
+    public func getAllSequences() -> [Sequence]{
+        
+        var sequencesArr: [Sequence] = []
+        
+        do {
+            for sequence in try db.prepare(sequences) {
+                var sequenceEl = Sequence(name: sequence[seq_name],
+                                          actions: [],
+                                          bgColor:sequence[seq_bgColor])
+                sequenceEl.id = sequence[seq_id]
+                sequencesArr.append(sequenceEl)
+            }
+            for i in sequencesArr.indices {
+                for action in try db.prepare(seqActions){
+                    if(action[seq_action_seq_id] == sequencesArr[i].id){
+                        var actionEl = Action(name: action[seq_action_name],
+                                              description: action[seq_action_description],
+                                              duration: Int(action[seq_action_duration]),
+                                              imageName: action[seq_action_imageName],
+                                              sequenceId: action[seq_action_seq_id])
+                        actionEl.id = action[seq_action_id]
+                        sequencesArr[i].actions.append(actionEl)
+                    }
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+            print(error)
+            print(error.self)
+        }
+        return sequencesArr
     }
     
 }

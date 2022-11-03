@@ -77,9 +77,3 @@ extension SettingsView: View {
         }
     }
 }
-
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsView(vm: ViewModel(state: ViewModel.State.settingsPage, fontSize: 24))
-//    }
-//}

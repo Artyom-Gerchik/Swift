@@ -10,6 +10,11 @@ import SwiftUI
 struct MainView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    
+    func move(from source: IndexSet, to destination: Int) {
+        vm.actionsOnMainPage.move(fromOffsets: source, toOffset: destination)
+        DB_Manager().hardUpdateActionsOnMainPage(updatedActions: vm.actionsOnMainPage)
+    }
 }
 
 extension MainView: View {
@@ -45,8 +50,21 @@ extension MainView: View {
                         sequence in
                         SequenceCardView(vm: vm,sequenceId: sequence.id, sequenceName: sequence.name, sequenceActions: sequence.actions, bgColor: sequence.bgColor)
                         
-                    }//.onMove(perform: move)
+                    }
                 }
+                .onAppear(perform: {
+                    if(DB_Manager().checkIfDbEmpty()){
+                        print("GETTING VIEWMODEL")
+                        let tmpVM = DB_Manager().getViewModel()
+                        vm.fontSize = tmpVM.fontSize
+                        vm.actionsOnMainPage = tmpVM.actionsOnMainPage
+                        vm.sequences = tmpVM.sequences
+                        
+                    }else{
+                        print("CREATING NEW VIEWMODEL")
+                        DB_Manager().addViewModel(fontSizeValue: vm.fontSize)
+                    }
+                })
                 FooterView(vm: vm).padding(.bottom)
             }else if(vm.state == ViewModel.State.settingsPage){
                 HeaderView(vm: vm)
@@ -57,23 +75,9 @@ extension MainView: View {
                 HeaderView(vm: vm)
                 Spacer()
                 TimerView(vm:vm, actionsForViewTimer: vm.actionsOnMainPage, actionsForViewText: vm.actionsOnMainPage)
-//                    .onAppear(perform: {
-//                        if(DB_Manager().checkIfDbEmpty()){
-//                            print("GETTING VIEWMODEL")
-//                            let tmpVM = DB_Manager().getViewModel()
-//                            vm.fontSize = tmpVM.fontSize
-//                            vm.actionsOnMainPage = tmpVM.actionsOnMainPage
-//
-//                        }else{
-//                            print("CREATING NEW VIEWMODEL")
-//                            DB_Manager().addViewModel(fontSizeValue: vm.fontSize)
-//                        }
-//                    })
                 Spacer()
             }
             else if (vm.state == ViewModel.State.secondTimerPage){
-                
-                
                 HeaderView(vm: vm)
                 Spacer()
                 let sequence = vm.sequences.first(where: {$0.id == vm.sequenceIdForTimer})
@@ -86,7 +90,6 @@ extension MainView: View {
                 CreateSequenceView(vm: vm)
                 Spacer()
                 Spacer()
-                //FooterView(vm: vm).padding(.bottom)
             }else if(vm.state == ViewModel.State.sequencesUnionPage){
                 HeaderView(vm: vm)
                 SequencesUnionView(vm: vm, checks: [])
@@ -97,17 +100,5 @@ extension MainView: View {
             }
         }
         .preferredColorScheme(isDarkMode ? .dark : .light)
-        
-    }
-    
-    func move(from source: IndexSet, to destination: Int) {
-        vm.actionsOnMainPage.move(fromOffsets: source, toOffset: destination)
-        DB_Manager().hardUpdateActionsOnMainPage(updatedActions: vm.actionsOnMainPage)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView(vm:ViewModel(state: ViewModel.State.createSequencePage,fontSize: 24, actionsOnMainPage: [], sequences: []))
     }
 }

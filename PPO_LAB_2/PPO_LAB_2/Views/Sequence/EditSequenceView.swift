@@ -10,11 +10,12 @@ import SwiftUI
 struct EditSequenceView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    
     @State var sequenceToEdit: Sequence = Sequence(name: "", actions: [], bgColor: "")
     
     func move(from source: IndexSet, to destination: Int) {
         sequenceToEdit.actions.move(fromOffsets: source, toOffset: destination)
-        //DB_Manager().hardUpdateActionsOnMainPage(updatedActions: vm.actionsOnMainPage)
+        DB_Manager().hardUpdateActions(updatedActions: sequenceToEdit.actions)
     }
 }
 
@@ -43,20 +44,8 @@ extension EditSequenceView: View {
                 }
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {
-                        
                         vm.updateSequence(updatedSequence: sequenceToEdit)
                         vm.state = ViewModel.State.secondPage
-                        
-                        
-//                        newSequence = vm.sequenceOnCreatePhase
-//
-//                        vm.addSequence(sequenceName: newSequence.name, sequenceActions: newSequence.actions, bgColor: bgColor.toHex()!)
-//                        //newSequence.bgColor = bgColor.toHex()!
-//                        //vm.sequences.append(newSequence)
-//                        vm.state = ViewModel.State.secondPage
-//
-//                        vm.sequenceOnCreatePhase = Sequence(name: "", actions: [], bgColor: "''")
-
                     }
                 }, label: {
                     Text("OK")
@@ -72,9 +61,3 @@ extension EditSequenceView: View {
             })
     }
 }
-
-//struct EditSequenceView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditSequenceView()
-//    }
-//}
