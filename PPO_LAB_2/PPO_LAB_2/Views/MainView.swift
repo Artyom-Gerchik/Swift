@@ -74,14 +74,14 @@ extension MainView: View {
             }else if (vm.state == ViewModel.State.mainTimerPage){
                 HeaderView(vm: vm)
                 Spacer()
-                TimerView(vm:vm, actionsForViewTimer: vm.actionsOnMainPage, actionsForViewText: vm.actionsOnMainPage)
+                TimerView(vm:vm, actionsForViewTimer: vm.actionsOnMainPage, actionsForViewText: vm.actionsOnMainPage, getBackActions: [])
                 Spacer()
             }
             else if (vm.state == ViewModel.State.secondTimerPage){
                 HeaderView(vm: vm)
                 Spacer()
                 let sequence = vm.sequences.first(where: {$0.id == vm.sequenceIdForTimer})
-                TimerView(vm: vm, actionsForViewTimer: sequence!.actions, actionsForViewText: sequence!.actions)
+                TimerView(vm: vm, actionsForViewTimer: sequence!.actions, actionsForViewText: sequence!.actions, getBackActions: [])
                 Spacer()
             }
             else if(vm.state == ViewModel.State.createSequencePage){

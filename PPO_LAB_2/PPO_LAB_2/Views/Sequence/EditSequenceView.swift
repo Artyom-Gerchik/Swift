@@ -10,45 +10,55 @@ import SwiftUI
 struct EditSequenceView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
-    
-    @State var sequenceToEdit: Sequence = Sequence(name: "", actions: [], bgColor: "")
+    @AppStorage("locale") private var locale = false
     
     func move(from source: IndexSet, to destination: Int) {
-        sequenceToEdit.actions.move(fromOffsets: source, toOffset: destination)
-        DB_Manager().hardUpdateActions(updatedActions: sequenceToEdit.actions)
+        vm.sequenceToEdit.actions.move(fromOffsets: source, toOffset: destination)
+        DB_Manager().hardUpdateActions(updatedActions: vm.sequenceToEdit.actions)
     }
 }
 
 extension EditSequenceView: View {
     var body: some View {
         VStack{
+            Spacer()
             ZStack{
-                if(sequenceToEdit.name.isEmpty){
-                    Text("Name Of Sequence")
+                if(vm.sequenceToEdit.name.isEmpty){
+                    Text((locale ? "Погоняло" : "Name Of Sequence"))
                         .foregroundColor(isDarkMode ? Color.white.opacity(0.4) : Color.black.opacity(0.4))
+                        .font(.system(size:vm.fontSize, weight: .regular))
+                        .lineLimit(1)
                 }
                 TextField(
                     "",
-                    text: $sequenceToEdit.name
+                    text: $vm.sequenceToEdit.name
                 )
                 .multilineTextAlignment(.center)
                 .foregroundColor(isDarkMode ? Color.white : Color.black)
+                .font(.system(size:vm.fontSize, weight: .regular))
+                .lineLimit(1)
             }
+            Spacer()
             VStack{
                 List{
-                    ForEach(sequenceToEdit.actions, id: \.self){
+                    ForEach(vm.sequenceToEdit.actions, id: \.self){
                         action in
-                        ActionCardView(vm: vm, actionId: action.id, actionName: action.name, actionDescription: action.description, actionDuration: action.duration, actionImageName: action.imageName)
+                        ActionCardView(vm: vm,
+                                       actionId: action.id,
+                                       actionName: action.name,
+                                       actionDescription: action.description,
+                                       actionDuration: action.duration,
+                                       actionImageName: action.imageName)
                         
                     }.onMove(perform: move)
                 }
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {
-                        vm.updateSequence(updatedSequence: sequenceToEdit)
+                        vm.updateSequence(updatedSequence: vm.sequenceToEdit)
                         vm.state = ViewModel.State.secondPage
                     }
                 }, label: {
-                    Text("OK")
+                    Text((locale ? "ДОБРО" : "OK"))
                         .font(.system(size:vm.fontSize, weight: .regular))
                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                 }).accentColor(Color.primary)
@@ -57,7 +67,7 @@ extension EditSequenceView: View {
         }
         .padding()
         .onAppear(perform: {
-                sequenceToEdit = vm.getSequenceForEdit(sequenceID: vm.sequenceIdToEdit)
-            })
+            vm.sequenceToEdit = vm.getSequenceForEdit(sequenceID: vm.sequenceIdToEdit)
+        })
     }
 }

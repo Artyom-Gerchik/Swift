@@ -28,6 +28,8 @@ class ViewModel: ObservableObject{
     @Published var isPaused: Bool = false
     @Published var sequenceIdForTimer: UUID!
     @Published var sequenceIdToEdit: UUID!
+    @Published var sequenceToEdit: Sequence = Sequence(name: "", actions: [], bgColor: "")
+    
     
     init(state: State, fontSize: Double, actionsOnMainPage: [Action], sequences: [Sequence]) {
         self.state = state
@@ -62,6 +64,17 @@ class ViewModel: ObservableObject{
         }
     }
     
+    func removeActionFromSequence(idToRemove: UUID){
+        var index: Int = 0
+        for action in sequenceToEdit.actions{
+            if(action.id == idToRemove){
+                sequenceToEdit.actions.remove(at: index)
+                DB_Manager().deleteOneActionFromSequence(idToDelete: idToRemove)
+            }
+            index += 1
+        }
+    }
+    
     func removeActionFromSequenceCreatePage(idToRemove: UUID){
         var index: Int = 0
         for action in sequenceOnCreatePhase.actions{
@@ -75,6 +88,18 @@ class ViewModel: ObservableObject{
     func deleteAllActionsOnMainPage(){
         actionsOnMainPage.removeAll()
         DB_Manager().deleteAllActionsOnMainPage()
+    }
+    
+    func deleteSequence(){
+        
+        for action in sequenceToEdit.actions{
+            DB_Manager().deleteOneActionFromSequence(idToDelete: action.id)
+        }
+        
+        if let index = sequences.firstIndex(where: {$0.id == sequenceToEdit.id}){
+            sequences.remove(at: index)
+            DB_Manager().deleteSequence(idToDelete: sequenceToEdit.id)
+        }
     }
     
     func addSequence(sequenceName: String, sequenceActions: [Action], bgColor: String){
@@ -103,6 +128,7 @@ class ViewModel: ObservableObject{
                 newSequence.actions.append(newAction)
             }
         }
+        newSequence.name.removeLast(3)
         addSequence(sequenceName: newSequence.name, sequenceActions: newSequence.actions, bgColor: bgColor)
     }
     
@@ -122,6 +148,11 @@ class ViewModel: ObservableObject{
                 sequences[i] = updatedSequence
             }
         }
+    }
+    
+    func cleanUpMemory(){
+        actionsOnMainPage.removeAll()
+        sequences.removeAll()
     }
 }
 
@@ -180,5 +211,12 @@ extension Color {
         } else {
             return String(format: "%02lX%02lX%02lX", lroundf(r * 255), lroundf(g * 255), lroundf(b * 255))
         }
+    }
+}
+
+extension View {
+    func hideKeyboard() {
+        let resign = #selector(UIResponder.resignFirstResponder)
+        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
     }
 }

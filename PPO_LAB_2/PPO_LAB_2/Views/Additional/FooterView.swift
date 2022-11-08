@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct FooterView{
-    @AppStorage("isDarkMode") private var isDarkMode = false
     @ObservedObject var vm: ViewModel
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("locale") private var locale = false
     
     @State var isExpanded: Bool = false
     @State private var sizeForSpacer: Int = 0
@@ -41,7 +42,7 @@ extension FooterView: View {
                         
                     }
                 }, label: {
-                    Text("START")
+                    Text((locale ? "СТАРТ" : "START"))
                         .font(.system(size:vm.fontSize, weight: .regular))
                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                 }).accentColor(Color.primary)
@@ -63,7 +64,7 @@ extension FooterView: View {
                         HStack{
                             Button(action: {
                                 withAnimation(.easeIn(duration: 0.25)) {
-                                    vm.addActionToMainPage(actionName: "Chill", actionDescription: "", actionDuration: 10, actionImageName: "sofa")
+                                    vm.addActionToMainPage(actionName: (locale ? "Перекур" : "Chill"), actionDescription: "", actionDuration: 10, actionImageName: "sofa")
                                 }
                             }, label: {
                                 Image(systemName: "sofa")
@@ -73,7 +74,7 @@ extension FooterView: View {
                         
                         Button(action: {
                             withAnimation(.easeIn(duration: 0.25)) {
-                                vm.addActionToMainPage(actionName: "Prepare", actionDescription: "", actionDuration: 10, actionImageName: "figure.wave")
+                                vm.addActionToMainPage(actionName: (locale ? "Готовсь" : "Prepare"), actionDescription: "", actionDuration: 10, actionImageName: "figure.wave")
                             }
                         }, label: {
                             Image(systemName: "figure.wave")
@@ -82,7 +83,7 @@ extension FooterView: View {
                         
                         Button(action: {
                             withAnimation(.easeIn(duration: 0.25)) {
-                                vm.addActionToMainPage(actionName: "Workout", actionDescription: "", actionDuration: 10, actionImageName: "dumbbell")
+                                vm.addActionToMainPage(actionName: (locale ? "Качалка" : "Workout"), actionDescription: "", actionDuration: 10, actionImageName: "dumbbell")
                             }
                         }, label: {
                             Image(systemName: "dumbbell")
@@ -103,7 +104,7 @@ extension FooterView: View {
                 Button(action: {
                     //
                 }, label: {
-                    Text("START")
+                    Text((locale ? "СТАРТ" : "START"))
                         .font(.system(size:vm.fontSize, weight: .regular))
                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                 }).accentColor(isDarkMode ? Color.black : Color.white)

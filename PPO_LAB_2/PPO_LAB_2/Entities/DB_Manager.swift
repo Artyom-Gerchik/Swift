@@ -63,11 +63,6 @@ class DB_Manager{
             seq_action_duration = Expression<Double>("seq_action_duration")
             seq_action_imageName = Expression<String>("seq_action_imageName")
             
-            //            UserDefaults.standard.set(false, forKey: "is_db_created")
-            //            try db.run(viewModels.drop())
-            //            try db.run(actionsOnMainPage.drop())
-            
-            
             if(!UserDefaults.standard.bool(forKey: "is_db_created")){
                 
                 try db.run(viewModels.create{ (t) in
@@ -246,6 +241,30 @@ class DB_Manager{
         }
     }
     
+    public func deleteOneActionFromSequence(idToDelete: UUID){
+        do{
+            let actionToDelete = seqActions.filter(seq_action_id == idToDelete)
+            try db.run(actionToDelete.delete())
+            
+        }catch{
+            print(error.localizedDescription)
+            print(error)
+            print(error.self)
+        }
+    }
+    
+    public func deleteSequence(idToDelete: UUID){
+        do{
+            let sequenceToDelete = sequences.filter(seq_id == idToDelete)
+            try db.run(sequenceToDelete.delete())
+        }catch{
+            print(error.localizedDescription)
+            print(error)
+            print(error.self)
+        }
+    }
+    
+    
     public func updateActionDurationOnMainPage(idToUpdate: UUID, newDuration: Double){
         do{
             let actionToUpdate = actionsOnMainPage.filter(id == idToUpdate)
@@ -274,6 +293,18 @@ class DB_Manager{
         do{
             let actionToUpdate = actionsOnMainPage.filter(id == idToUpdate)
             try db.run(actionToUpdate.update(description <- newDesription))
+        }
+        catch{
+            print(error.localizedDescription)
+            print(error)
+            print(error.self)
+        }
+    }
+    
+    public func updateActionDescription(idToUpdate: UUID, newDesription: String){
+        do{
+            let actionToUpdate = seqActions.filter(seq_action_id == idToUpdate)
+            try db.run(actionToUpdate.update(seq_action_description <- newDesription))
         }
         catch{
             print(error.localizedDescription)
@@ -343,6 +374,25 @@ class DB_Manager{
             print(error.self)
         }
         return sequencesArr
+    }
+    
+    public func cleanUpMemory(){
+        do{
+            
+            try db.run(viewModels.delete())
+            try db.run(actionsOnMainPage.delete())
+            try db.run(sequences.delete())
+            try db.run(seqActions.delete())
+            //UserDefaults.standard.set(false, forKey: "is_db_created")
+            
+            //DB_Manager()
+            
+            
+        }catch{
+            print(error.localizedDescription)
+            print(error)
+            print(error.self)
+        }
     }
     
 }

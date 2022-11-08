@@ -19,6 +19,7 @@
 		774DD2C22900466C000C280C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774DD2C12900466C000C280C /* ViewModel.swift */; };
 		774DD2C429005757000C280C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774DD2C329005757000C280C /* SettingsView.swift */; };
 		774FE1332912A16500BF7FE5 /* EditSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774FE1322912A16500BF7FE5 /* EditSequenceView.swift */; };
+		775200BF291A80FC00939F31 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 775200BE291A80FC00939F31 /* AlertToast */; };
 		7757D4252901A218008B30EA /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7757D4242901A218008B30EA /* Action.swift */; };
 		779453EF2907161000DF8E5D /* ActionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779453EE2907161000DF8E5D /* ActionCardView.swift */; };
 		779453F12907F3A100DF8E5D /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779453F02907F3A100DF8E5D /* TimerView.swift */; };
@@ -54,6 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77345345290974880080A252 /* SQLite in Frameworks */,
+				775200BF291A80FC00939F31 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +168,7 @@
 			name = PPO_LAB_2;
 			packageProductDependencies = (
 				77345344290974880080A252 /* SQLite */,
+				775200BE291A80FC00939F31 /* AlertToast */,
 			);
 			productName = PPO_LAB_2;
 			productReference = 774DD2AC2900307B000C280C /* PPO_LAB_2.app */;
@@ -197,6 +200,7 @@
 			mainGroup = 774DD2A32900307B000C280C;
 			packageReferences = (
 				77345343290974880080A252 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				775200BD291A80FC00939F31 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 774DD2AD2900307B000C280C /* Products */;
 			projectDirPath = "";
@@ -449,6 +453,14 @@
 				minimumVersion = 0.9.2;
 			};
 		};
+		775200BD291A80FC00939F31 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -456,6 +468,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 77345343290974880080A252 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
 			productName = SQLite;
+		};
+		775200BE291A80FC00939F31 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 775200BD291A80FC00939F31 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

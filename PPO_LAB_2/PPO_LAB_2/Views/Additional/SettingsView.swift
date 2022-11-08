@@ -10,8 +10,9 @@ import SwiftUI
 struct SettingsView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
-    @State var test: Double!
+    @AppStorage("locale") private var locale = false
     
+    @State var test: Double!
     @State private var showingAlert: Bool = false
 }
 
@@ -20,13 +21,14 @@ extension SettingsView: View {
         VStack{
             List{
                 HStack{
-                    Text("Font Size")
+                    Text((locale ? "Шрифт" : "Font Size"))
                         .font(.system(size:vm.fontSize, weight: .regular))
                     
                     Spacer()
                     
                     Button(action: {
                         withAnimation(.easeIn(duration: 0.25)) {
+                            test = vm.fontSize
                             showingAlert = true
                         }
                     }, label: {
@@ -35,41 +37,62 @@ extension SettingsView: View {
                         
                     })
                     .accentColor(Color.primary)
-                    .alert("Font Size", isPresented: $showingAlert) {
+                    .alert((locale ? "Шрифт" : "Font Size"), isPresented: $showingAlert) {
                         Button(action: {
-                            vm.changeFontSize(newFontSize: 36)
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                vm.changeFontSize(newFontSize: 36)
+                                DB_Manager().updateViewModel(fontSizeToFind: test, fontSizeValue: vm.fontSize)
+                            }
                         }, label: {
-                            Text("Big")
+                            Text((locale ? "Толстый" : "Big"))
                                 .font(.system(size:36, weight: .regular))
                             
                         })
                         Button(action: {
-                            vm.changeFontSize(newFontSize: 24)
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                vm.changeFontSize(newFontSize: 24)
+                                DB_Manager().updateViewModel(fontSizeToFind: test, fontSizeValue: vm.fontSize)
+                            }
                         }, label: {
-                            Text("Medium")
+                            Text((locale ? "Середняк" : "Medium"))
                                 .font(.system(size:24, weight: .regular))
-                            
                         })
                         Button(action: {
-                            vm.changeFontSize(newFontSize: 12)
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                vm.changeFontSize(newFontSize: 12)
+                                DB_Manager().updateViewModel(fontSizeToFind: test, fontSizeValue: vm.fontSize)
+                            }
                         }, label: {
-                            Text("Small")
+                            Text((locale ? "Тонкий" : "Small"))
                                 .font(.system(size:12, weight: .regular))
                             
                         })
-                        Button("Cancel") { }
+                        Button((locale ? "Откат" : "Cancel"), role: .cancel) { }
                     }
-                    .onAppear(perform: {
-                        test = vm.fontSize
-                    })
-                    .onDisappear(perform: {
-                        DB_Manager().updateViewModel(fontSizeToFind: test, fontSizeValue: vm.fontSize)
-                    })
                 }
                 HStack{
-                    Toggle("Dark Mode", isOn: $isDarkMode.animation())
+                    Toggle((locale ? "Негр" : "Dark Mode"), isOn: $isDarkMode.animation())
                         .font(.system(size:vm.fontSize, weight: .regular))
                         .tint(Color.gray)
+                }
+                HStack{
+                    Toggle((locale ? "Русиш" : "English"), isOn: $locale.animation())
+                        .font(.system(size:vm.fontSize, weight: .regular))
+                        .tint(Color.gray)
+                }
+                HStack{
+                    Button(action: {
+                        withAnimation(.easeIn(duration: 0.25)) {
+                            DB_Manager().cleanUpMemory()
+                            vm.cleanUpMemory()
+                            isDarkMode = false
+                            locale = false
+                        }
+                    }, label: {
+                        Text((locale ? "Вынести Мусор" : "Clean Up Memory"))
+                            .font(.system(size:vm.fontSize, weight: .regular))
+                            .foregroundColor(isDarkMode ? Color.white : Color.black)
+                    })
                 }
             }
             .scrollContentBackground(.hidden)

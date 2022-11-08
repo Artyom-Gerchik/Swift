@@ -10,6 +10,7 @@ import SwiftUI
 struct SequenceCardView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("locale") private var locale = false
     
     @State var sequenceId: UUID
     @State var sequenceName: String = ""
@@ -24,6 +25,7 @@ extension SequenceCardView: View {
                 .fill(Color(hex: bgColor)!)
                 .frame(height: 180)
             VStack{
+                Spacer()
                 HStack{
                     if(vm.state == ViewModel.State.secondPage){
                         Button(action: {
@@ -40,7 +42,10 @@ extension SequenceCardView: View {
                     }
                     Spacer()
                     Text(sequenceName)
-                        .foregroundColor(isDarkMode ? Color.black : Color.white)
+                        .font(.system(size: vm.fontSize, weight: .regular))
+                        .foregroundColor(isDarkMode ? Color.white : Color.black)
+                        .lineLimit(1)
+                        .padding([.leading, .trailing])
                     Spacer()
                     if(vm.state == ViewModel.State.secondPage){
                         Button(action: {
@@ -63,12 +68,17 @@ extension SequenceCardView: View {
                         HStack{
                             Spacer()
                             Text(action.name)
+                                .lineLimit(1)
+                                .font(.system(size:vm.fontSize, weight: .regular))
+                                .foregroundColor(isDarkMode ? Color.white : Color.black)
                             Text(String(action.duration))
+                                .lineLimit(1)
+                                .font(.system(size:vm.fontSize, weight: .regular))
+                                .foregroundColor(isDarkMode ? Color.white : Color.black)
                             Spacer()
                         }
                     }
-                }.frame(width: 300, height: 100)
-                    .padding()
+                }.padding()
             }
         }.padding([.trailing, .leading])
     }

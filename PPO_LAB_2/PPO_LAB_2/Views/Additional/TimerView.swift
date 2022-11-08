@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct TimerView{
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("locale") private var locale = false
     
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var actionsForViewTimer: [Action]
     @State var actionsForViewText: [Action]
+    @State var getBackActions: [Action]
     @State var currentDuration: Int = 0
 }
 
@@ -36,10 +38,14 @@ extension TimerView: View {
                             .foregroundColor(isDarkMode ? Color.black : Color.white)
                             .onReceive(timer) { _ in
                                 if (actionsForViewTimer[0].duration > 0 && !vm.isPaused) {
+                                    if(actionsForViewTimer[0].duration == 3 || actionsForViewTimer[0].duration == 2 || actionsForViewTimer[0].duration == 1){
+                                        let systemSoundID: SystemSoundID = 1013
+                                        AudioServicesPlaySystemSound(systemSoundID)
+                                    }
                                     actionsForViewTimer[0].duration -= 1
                                 }else if(!vm.isPaused){
+                                    getBackActions.append(actionsForViewText.removeFirst())
                                     actionsForViewTimer.removeFirst()
-                                    actionsForViewText.removeFirst()
                                 }
                             }
                         
@@ -64,31 +70,46 @@ extension TimerView: View {
                     }
                 }
                 .scrollContentBackground(.hidden)
+                Spacer()
+                HStack{
+                    Button(action: {
+                        actionsForViewTimer[0].duration = actionsForViewText[0].duration
+                        let tmp = getBackActions.popLast()
+                        if(tmp != nil){
+                            actionsForViewTimer.insert(tmp!, at: 0)
+                            actionsForViewText.insert(tmp!, at: 0)
+                        }
+                    }, label: {
+                        Image(systemName: "backward.frame")
+                            .font(.system(size:vm.fontSize, weight: .regular))
+                            .foregroundColor(isDarkMode ? Color.white : Color.black)
+                    })
+                    Spacer()
+                    HStack{
+                        Text(String(getBackActions.count + 1) + " | " + String(actionsForViewText.count + getBackActions.count))
+                            .font(.system(size:vm.fontSize, weight: .regular))
+                            .foregroundColor(isDarkMode ? Color.white : Color.black)
+                    }
+                    Spacer()
+                    Button(action: {
+                        getBackActions.append(actionsForViewText.removeFirst())
+                        actionsForViewTimer.removeFirst()
+                    }, label: {
+                        Image(systemName: "forward.frame")
+                            .font(.system(size:vm.fontSize, weight: .regular))
+                            .foregroundColor(isDarkMode ? Color.white : Color.black)
+                    })
+                }.padding()
                 
             }else{
                 ZStack{
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
                         .fill(isDarkMode ? Color.white : Color.black).padding()
-                    Text("Finish!")
+                    Text((locale ? "Стапэ!" : "Finish!"))
                         .font(.system(size: 70, weight: .regular))
                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                 }
             }
         }
     }
-    func test(){
-        
-    }
 }
-
-//struct TimerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TimerView(vm:ViewModel(state: ViewModel.State.mainPage,fontSize: 24, actionsOnMainPage: [], sequences: []), actionsForViewTimer: [
-//            Action(name: "test1", description: "tt", duration: 10, imageName: "sofa"),
-//            Action(name: "test2", description: "tt", duration: 11, imageName: "sofa"),
-//            Action(name: "test3", description: "tt", duration: 12, imageName: "sofa")], actionsForViewText: [
-//                Action(name: "test1", description: "tt", duration: 10, imageName: "sofa"),
-//                Action(name: "test2", description: "tt", duration: 11, imageName: "sofa"),
-//                Action(name: "test3", description: "tt", duration: 12, imageName: "sofa")])
-//    }
-//}

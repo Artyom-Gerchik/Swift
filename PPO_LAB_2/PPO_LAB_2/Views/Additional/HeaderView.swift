@@ -10,6 +10,7 @@ import SwiftUI
 struct HeaderView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("locale") private var locale = false
 }
 
 extension HeaderView: View {
@@ -35,11 +36,10 @@ extension HeaderView: View {
                     Image(systemName: "list.bullet")
                         .font(.system(size:vm.fontSize, weight: .regular))
                 }).accentColor(Color.primary)
-                    .animation(.easeInOut, value: 1)
+                    .foregroundColor(Color.gray)
                 
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)) {
-                        
                         vm.state = ViewModel.State.secondPage
                     }
                 }, label: {
@@ -87,6 +87,7 @@ extension HeaderView: View {
                     Image(systemName: "rectangle.on.rectangle")
                         .font(.system(size:vm.fontSize, weight: .regular))
                 }).accentColor(Color.primary)
+                    .foregroundColor(Color.gray)
                 
                 Spacer()
                 
@@ -112,15 +113,9 @@ extension HeaderView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    withAnimation(.easeIn(duration: 0.25)) {
-                        vm.state = ViewModel.State.mainPage
-                    }
-                }, label: {
-                    Text("Settings")
-                        .font(.system(size:vm.fontSize, weight: .regular))
-                }).accentColor(Color.primary)
-                    .animation(.easeInOut, value: 1)
+                Text((locale ? "Подшаманить" : "Settings"))
+                    .font(.system(size:vm.fontSize, weight: .regular))
+                    .accentColor(Color.primary)
                 
                 Spacer()
                 
@@ -188,6 +183,19 @@ extension HeaderView: View {
                 
                 Spacer()
                 
+                Text((locale ? "Создание" : "Create"))
+                    .font(.system(size:vm.fontSize, weight: .regular))
+                    .accentColor(Color.primary)
+                
+                Spacer()
+                
+                Button(action: {
+                    //
+                }, label: {
+                    Image(systemName: "plus")
+                        .font(.system(size:vm.fontSize, weight: .regular))
+                }).accentColor(isDarkMode ? Color.black : Color.white)
+                
             }.padding()
         }else if(vm.state == ViewModel.State.sequencesUnionPage){
             HStack{
@@ -202,6 +210,19 @@ extension HeaderView: View {
                 
                 Spacer()
                 
+                Text((locale ? "Братание" : "Union"))
+                    .font(.system(size:vm.fontSize, weight: .regular))
+                    .accentColor(Color.primary)
+                
+                Spacer()
+                
+                Button(action: {
+                    //
+                }, label: {
+                    Image(systemName: "plus")
+                        .font(.system(size:vm.fontSize, weight: .regular))
+                }).accentColor(isDarkMode ? Color.black : Color.white)
+                
             }.padding()
         }else if(vm.state == ViewModel.State.editSequencePage){
             HStack{
@@ -215,6 +236,22 @@ extension HeaderView: View {
                 }).accentColor(Color.primary)
                 
                 Spacer()
+                
+                Text((locale ? "Марафет" : "Edit"))
+                    .font(.system(size:vm.fontSize, weight: .regular))
+                    .accentColor(Color.primary)
+                
+                Spacer()
+                
+                Button(action: {
+                    withAnimation(.easeIn(duration: 0.25)) {
+                        vm.deleteSequence()
+                        vm.state = ViewModel.State.secondPage
+                    }
+                }, label: {
+                    Image(systemName: "trash")
+                        .font(.system(size:vm.fontSize, weight: .regular))
+                }).accentColor(Color.primary)
                 
             }.padding()
         }

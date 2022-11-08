@@ -10,11 +10,30 @@ import SwiftUI
 struct ActionCardView{
     @ObservedObject var vm: ViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("locale") private var locale = false
     
     @State var actionId: UUID
     @State var actionName: String = ""
     @State var actionDescription: String = ""
-    @State var actionDuration: Int = 0
+    @State var actionDuration: Int{
+        didSet{
+            
+            let startNumber = 0
+            let endNumber = 61
+            let numberRange = startNumber...endNumber
+            
+            if (numberRange.contains(actionDuration + 1) && numberRange.contains(actionDuration - 1)) {
+                // actionDuration = 1
+            }else{
+                actionDuration = oldValue
+                if(vm.state == ViewModel.State.mainPage){
+                    DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
+                }else if(vm.state == ViewModel.State.editSequencePage){
+                    DB_Manager().updateActionDuration(idToUpdate: actionId, newDuration: Double(actionDuration))
+                }
+            }
+        }
+    }
     @State var actionImageName : String = ""
 }
 
@@ -53,9 +72,9 @@ extension ActionCardView: View {
                         .overlay(isDarkMode ? Color.black : Color.white)
                 }
                 
-                Spacer()
                 
                 HStack{
+                    Spacer()
                     VStack{
                         if(vm.fontSize == 36){
                             Text(actionName)
@@ -68,7 +87,7 @@ extension ActionCardView: View {
                         }
                         ZStack{
                             if(actionDescription.isEmpty){
-                                Text("Description")
+                                Text((locale ? "Малява" : "Description"))
                                     .foregroundColor(isDarkMode ? Color.black.opacity(0.4) : Color.white.opacity(0.4))
                             }
                             TextField(
@@ -78,6 +97,14 @@ extension ActionCardView: View {
                             .onSubmit {
                                 if(vm.state == ViewModel.State.mainPage){
                                     DB_Manager().updateActionDescriptionOnMainPage(idToUpdate: actionId, newDesription: actionDescription)
+                                }else if(vm.state == ViewModel.State.editSequencePage){
+                                    DB_Manager().updateActionDescription(idToUpdate: actionId, newDesription: actionDescription)
+                                }else if(vm.state == ViewModel.State.createSequencePage){
+                                    for index in vm.sequenceOnCreatePhase.actions.indices{
+                                        if(vm.sequenceOnCreatePhase.actions[index].id == actionId){
+                                            vm.sequenceOnCreatePhase.actions[index].description = actionDescription
+                                        }
+                                    }
                                 }
                             }
                             .multilineTextAlignment(.center)
@@ -92,16 +119,11 @@ extension ActionCardView: View {
                                         DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
                                     }else if(vm.state == ViewModel.State.editSequencePage){
                                         DB_Manager().updateActionDuration(idToUpdate: actionId, newDuration: Double(actionDuration))
-                                        if(DB_Manager().checkIfDbEmpty()){
-                                            print("GETTING VIEWMODEL")
-                                            let tmpVM = DB_Manager().getViewModel()
-                                            vm.fontSize = tmpVM.fontSize
-                                            vm.actionsOnMainPage = tmpVM.actionsOnMainPage
-                                            vm.sequences = tmpVM.sequences
-                                            
-                                        }else{
-                                            print("CREATING NEW VIEWMODEL")
-                                            DB_Manager().addViewModel(fontSizeValue: vm.fontSize)
+                                    }else if(vm.state == ViewModel.State.createSequencePage){
+                                        for index in vm.sequenceOnCreatePhase.actions.indices{
+                                            if(vm.sequenceOnCreatePhase.actions[index].id == actionId){
+                                                vm.sequenceOnCreatePhase.actions[index].duration = actionDuration
+                                            }
                                         }
                                     }
                                 }
@@ -137,6 +159,12 @@ extension ActionCardView: View {
                                         DB_Manager().updateActionDurationOnMainPage(idToUpdate: actionId, newDuration: Double(actionDuration))
                                     }else if(vm.state == ViewModel.State.editSequencePage){
                                         DB_Manager().updateActionDuration(idToUpdate: actionId, newDuration: Double(actionDuration))
+                                    }else if(vm.state == ViewModel.State.createSequencePage){
+                                        for index in vm.sequenceOnCreatePhase.actions.indices{
+                                            if(vm.sequenceOnCreatePhase.actions[index].id == actionId){
+                                                vm.sequenceOnCreatePhase.actions[index].duration = actionDuration
+                                            }
+                                        }
                                     }
                                     
                                 }
@@ -164,6 +192,8 @@ extension ActionCardView: View {
                                     vm.removeActionFromMainPage(idToRemove: actionId)
                                 }else if(vm.state == ViewModel.State.createSequencePage){
                                     vm.removeActionFromSequenceCreatePage(idToRemove: actionId)
+                                }else if(vm.state == ViewModel.State.editSequencePage){
+                                    vm.removeActionFromSequence(idToRemove: actionId)
                                 }
                             }
                         }, label: {
@@ -182,5 +212,19 @@ extension ActionCardView: View {
                 }
             }
         }.padding()
+            .onTapGesture {
+                hideKeyboard()
+                if(vm.state == ViewModel.State.mainPage){
+                    DB_Manager().updateActionDescriptionOnMainPage(idToUpdate: actionId, newDesription: actionDescription)
+                }else if(vm.state == ViewModel.State.editSequencePage){
+                    DB_Manager().updateActionDescription(idToUpdate: actionId, newDesription: actionDescription)
+                }else if(vm.state == ViewModel.State.createSequencePage){
+                    for index in vm.sequenceOnCreatePhase.actions.indices{
+                        if(vm.sequenceOnCreatePhase.actions[index].id == actionId){
+                            vm.sequenceOnCreatePhase.actions[index].description = actionDescription
+                        }
+                    }
+                }
+            }
     }
 }

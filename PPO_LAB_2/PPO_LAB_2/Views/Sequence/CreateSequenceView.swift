@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CreateSequenceView{
-    @AppStorage("isDarkMode") private var isDarkMode = false
     @ObservedObject var vm: ViewModel
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("locale") private var locale = false
     
     @State var isExpanded: Bool = false
     @State var isMainMenuActive : Bool = false
@@ -27,7 +28,7 @@ extension CreateSequenceView: View {
         VStack{
             ZStack{
                 if(vm.sequenceOnCreatePhase.name.isEmpty){
-                    Text("Name Of Sequence")
+                    Text((locale ? "Погоняло" : "Name Of Sequence"))
                         .foregroundColor(isDarkMode ? Color.white.opacity(0.4) : Color.black.opacity(0.4))
                 }
                 TextField(
@@ -65,7 +66,7 @@ extension CreateSequenceView: View {
                         vm.sequenceOnCreatePhase = Sequence(name: "", actions: [], bgColor: "''")
                     }
                 }, label: {
-                    Text("OK")
+                    Text((locale ? "ДОБРО" : "OK"))
                         .font(.system(size:vm.fontSize, weight: .regular))
                         .foregroundColor(isDarkMode ? Color.black : Color.white)
                 }).accentColor(Color.primary)
@@ -87,7 +88,7 @@ extension CreateSequenceView: View {
                         HStack{
                             Button(action: {
                                 withAnimation(.easeIn(duration: 0.25)) {
-                                    vm.sequenceOnCreatePhase.actions.append(Action(name:"Chill",
+                                    vm.sequenceOnCreatePhase.actions.append(Action(name:(locale ? "Перекур" : "Chill"),
                                                                                    description: "",
                                                                                    duration: 10,
                                                                                    imageName: "sofa",
@@ -101,7 +102,7 @@ extension CreateSequenceView: View {
                         
                         Button(action: {
                             withAnimation(.easeIn(duration: 0.25)) {
-                                vm.sequenceOnCreatePhase.actions.append(Action(name: "Prepare",
+                                vm.sequenceOnCreatePhase.actions.append(Action(name: (locale ? "Готовсь" : "Prepare"),
                                                                                description: "",
                                                                                duration: 10,
                                                                                imageName: "figure.wave",
@@ -114,7 +115,7 @@ extension CreateSequenceView: View {
                         
                         Button(action: {
                             withAnimation(.easeIn(duration: 0.25)) {
-                                vm.sequenceOnCreatePhase.actions.append(Action(name: "Workout",
+                                vm.sequenceOnCreatePhase.actions.append(Action(name: (locale ? "Качалка" : "Workout"),
                                                                                description: "",
                                                                                duration: 10,
                                                                                imageName: "dumbbell",
