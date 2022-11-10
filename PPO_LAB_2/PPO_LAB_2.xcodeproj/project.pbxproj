@@ -28,6 +28,19 @@
 		77D4DE36290FD6AF00927D82 /* CreateSequenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D4DE35290FD6AF00927D82 /* CreateSequenceView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		775200D9291A8DDD00939F31 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		77345346290977380080A252 /* DB_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB_Manager.swift; sourceTree = "<group>"; };
 		7742356D2911561A00F391FB /* SequencesUnionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequencesUnionView.swift; sourceTree = "<group>"; };
@@ -41,6 +54,9 @@
 		774DD2C12900466C000C280C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		774DD2C329005757000C280C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		774FE1322912A16500BF7FE5 /* EditSequenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSequenceView.swift; sourceTree = "<group>"; };
+		775200C6291A8DDA00939F31 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		775200C8291A8DDA00939F31 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		775200EC291A950400939F31 /* PPO-LAB-2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PPO-LAB-2-Info.plist"; sourceTree = SOURCE_ROOT; };
 		7757D4242901A218008B30EA /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		779453EE2907161000DF8E5D /* ActionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCardView.swift; sourceTree = "<group>"; };
 		779453F02907F3A100DF8E5D /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -66,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				774DD2AE2900307B000C280C /* PPO_LAB_2 */,
+				775200C5291A8DDA00939F31 /* Frameworks */,
 				774DD2AD2900307B000C280C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +98,7 @@
 		774DD2AE2900307B000C280C /* PPO_LAB_2 */ = {
 			isa = PBXGroup;
 			children = (
+				775200EC291A950400939F31 /* PPO-LAB-2-Info.plist */,
 				774DD2AF2900307B000C280C /* PPO_LAB_2App.swift */,
 				7757D4232901A157008B30EA /* Entities */,
 				7757D4222901A135008B30EA /* Views */,
@@ -128,6 +146,15 @@
 			path = Action;
 			sourceTree = "<group>";
 		};
+		775200C5291A8DDA00939F31 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				775200C6291A8DDA00939F31 /* WidgetKit.framework */,
+				775200C8291A8DDA00939F31 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7757D4222901A135008B30EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +187,7 @@
 				774DD2A82900307B000C280C /* Sources */,
 				774DD2A92900307B000C280C /* Frameworks */,
 				774DD2AA2900307B000C280C /* Resources */,
+				775200D9291A8DDD00939F31 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -181,7 +209,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					774DD2AB2900307B000C280C = {
@@ -299,7 +327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -353,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -374,17 +402,20 @@
 				DEVELOPMENT_TEAM = 3HB5QSVL8C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PPO-LAB-2-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gerchik.artyom.PPO-LAB-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gerchik.artyom.PPO-LAB-2-newBundle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -403,17 +434,20 @@
 				DEVELOPMENT_TEAM = 3HB5QSVL8C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PPO-LAB-2-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gerchik.artyom.PPO-LAB-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gerchik.artyom.PPO-LAB-2-newBundle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

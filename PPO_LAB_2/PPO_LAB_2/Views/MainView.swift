@@ -1,10 +1,11 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  PPO_LAB_2
 //
 //  Created by Artyom on 19.10.22.
 //
 
+import ActivityKit
 import SwiftUI
 
 struct MainView{
@@ -102,3 +103,53 @@ extension MainView: View {
         .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 }
+
+//import SwiftUI
+//import ActivityKit
+//
+//struct MainView: View {
+//    var body: some View {
+//        VStack {
+//            Image(systemName: "globe")
+//                .imageScale(.large)
+//                .foregroundColor(.accentColor)
+//            Text("Hello, world!")
+//
+//            Button(action: {
+//                start()
+//            }, label: {
+//                Text("Start")
+//            })
+//            Button(action: {
+//                stop()
+//            }, label: {
+//                Text("Stop")
+//            })
+//        }
+//        .padding()
+//    }
+//
+//    func start(){
+//        let attributes = PPO_LAB2_WIDGET_Attributes(name: "testName")
+//        let initialContentState = PPO_LAB2_WIDGET_Attributes.ContentState(value: Date()...Date().addingTimeInterval(1 * 10))
+//
+//        do{
+//
+//            let MyActivity = try Activity<PPO_LAB2_WIDGET_Attributes>.request(attributes: attributes,
+//                                                                    contentState: initialContentState)
+//            print("Requested a Live Activity \(MyActivity.id)")
+//
+//        }catch (let error){
+//            print("Error Requesting a Live Activity \(error.localizedDescription)")
+//        }
+//
+//    }
+//    func stop(){
+//        Task{
+//            for activity in Activity<PPO_LAB2_WIDGET_Attributes>.activities{
+//                await activity.end(dismissalPolicy: .immediate)
+//            }
+//        }
+//    }
+//
+//}
