@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AlertToast
+
 
 struct SettingsView{
     @ObservedObject var vm: ViewModel
@@ -14,6 +16,7 @@ struct SettingsView{
     
     @State var test: Double!
     @State private var showingAlert: Bool = false
+    @State var toast: Bool = false
 }
 
 extension SettingsView: View {
@@ -85,8 +88,9 @@ extension SettingsView: View {
                         withAnimation(.easeIn(duration: 0.25)) {
                             DB_Manager().cleanUpMemory()
                             vm.cleanUpMemory()
-                            isDarkMode = false
-                            locale = false
+                            toast.toggle()
+                            //isDarkMode = false
+                            //locale = false
                         }
                     }, label: {
                         Text((locale ? "Вынести Мусор" : "Clean Up Memory"))
@@ -97,6 +101,8 @@ extension SettingsView: View {
             }
             .scrollContentBackground(.hidden)
             .scrollDisabled(true)
+        }.toast(isPresenting: $toast, duration: 1, tapToDismiss: true){
+            AlertToast(displayMode: .hud, type: .regular, title: (locale ? "Всё в ажуре внатуре!" : "Memory cleaned up"))
         }
     }
 }

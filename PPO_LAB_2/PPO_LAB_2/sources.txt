@@ -1,0 +1,247 @@
+@startuml
+' STYLE START
+hide empty members
+skinparam shadowing false
+' STYLE END
+
+
+class "PPO_LAB_2App" as PPO_LAB_2App << (S, SkyBlue) struct >> { 
+  ~body : some Scene 
+}
+class "MenuButtons" as MenuButtons << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  ~buttonImage : String
+  ~body : some View 
+}
+class "ActionCardView" as ActionCardView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale
+  ~actionId : UUID
+  ~actionName : String
+  ~actionDescription : String
+  ~actionDuration : Int
+  ~actionImageName : String 
+}
+class "ActionCardView" as ActionCardView0 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "SettingsView" as SettingsView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale
+  ~test : Double!
+  -showingAlert : Bool 
+}
+class "SettingsView" as SettingsView1 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "FooterView" as FooterView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale
+  ~isExpanded : Bool
+  -sizeForSpacer : Int
+  ~isMainMenuActive : Bool 
+}
+class "FooterView" as FooterView2 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "TimerView" as TimerView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale
+  ~scenePhase
+  ~timer
+  ~actionsForViewTimer : [Action]
+  ~actionsForViewText : [Action]
+  ~getBackActions : [Action]
+  ~startBackground : Date!
+  ~endBackground : Date!
+  ~elapsedTimeInBackground : Int 
+}
+class "TimerView" as TimerView3 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "HeaderView" as HeaderView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale 
+}
+class "HeaderView" as HeaderView4 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "MainView" as MainView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  ~move(from:to:) 
+}
+class "MainView" as MainView5 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "CreateSequenceView" as CreateSequenceView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale
+  ~isExpanded : Bool
+  ~isMainMenuActive : Bool
+  ~bgColor : Color
+  ~newSequence : Sequence
+  ~move(from:to:) 
+}
+class "CreateSequenceView" as CreateSequenceView6 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "EditSequenceView" as EditSequenceView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale
+  ~move(from:to:) 
+}
+class "EditSequenceView" as EditSequenceView7 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "SequencesUnionView" as SequencesUnionView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale
+  ~checks : [Bool]
+  ~checkId : Int
+  ~idsForUnion : [UUID]
+  ~bgColor : Color
+  ~seqUnions : [Sequence]
+  ~toast : Bool 
+}
+class "SequencesUnionView" as SequencesUnionView8 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "SequenceCardView" as SequenceCardView << (S, SkyBlue) struct >> { 
+  ~vm : ViewModel
+  -isDarkMode
+  -locale
+  ~sequenceId : UUID
+  ~sequenceName : String
+  ~sequenceActions : [Action]
+  ~bgColor : String! 
+}
+class "SequenceCardView" as SequenceCardView9 << (X, Orchid) extension >> { 
+  body : some View 
+}
+class "DB_Manager" as DB_Manager << (C, DarkSeaGreen) >> { 
+  -db : Connection!
+  -viewModels : Table!
+  -fontSize : Expression<Double>!
+  -actionsOnMainPage : Table!
+  -id : Expression<UUID>!
+  -name : Expression<String>!
+  -description : Expression<String>!
+  -duration : Expression<Double>!
+  -imageName : Expression<String>!
+  -sequences : Table!
+  -seq_id : Expression<UUID>!
+  -seq_name : Expression<String>!
+  -seq_bgColor : Expression<String>!
+  -seqActions : Table!
+  -seq_action_seq_id : Expression<UUID>!
+  -seq_action_id : Expression<UUID>!
+  -seq_action_name : Expression<String>!
+  -seq_action_description : Expression<String>!
+  -seq_action_duration : Expression<Double>!
+  -seq_action_imageName : Expression<String>!
+  ~init()
+  +checkIfDbEmpty()
+  +addViewModel(fontSizeValue:)
+  +getViewModel()
+  +updateViewModel(fontSizeToFind:fontSizeValue:)
+  +addActionOnMainPage(idValue:nameValue:descriptionValue:durationValue:imageNameValue:)
+  +getActionsOnMainPage()
+  +hardUpdateActionsOnMainPage(updatedActions:)
+  +hardUpdateActions(updatedActions:)
+  +deleteOneActionOnMainPage(idToDelete:)
+  +deleteOneActionFromSequence(idToDelete:)
+  +deleteSequence(idToDelete:)
+  +updateActionDurationOnMainPage(idToUpdate:newDuration:)
+  +updateActionDuration(idToUpdate:newDuration:)
+  +updateActionDescriptionOnMainPage(idToUpdate:newDesription:)
+  +updateActionDescription(idToUpdate:newDesription:)
+  +deleteAllActionsOnMainPage()
+  +addSequence(sequenceToAdd:)
+  +getAllSequences()
+  +cleanUpMemory() 
+}
+class "Sequence" as Sequence << (S, SkyBlue) struct >> { 
+  ~id : UUID
+  ~name : String
+  ~actions : [Action]
+  ~bgColor : String
+  ~init(name:actions:bgColor:) 
+}
+class "ViewModel" as ViewModel << (C, DarkSeaGreen) >> { 
+  ~state : State
+  ~fontSize : Double
+  ~actionsOnMainPage : [Action]
+  ~sequenceOnCreatePhase : Sequence
+  ~sequences : [Sequence]
+  ~isPaused : Bool
+  ~sequenceIdForTimer : UUID!
+  ~sequenceIdToEdit : UUID!
+  ~sequenceToEdit : Sequence
+  ~init(state:fontSize:actionsOnMainPage:sequences:)
+  ~changeFontSize(newFontSize:)
+  ~addActionToMainPage(actionName:actionDescription:actionDuration:actionImageName:)
+  ~removeActionFromMainPage(idToRemove:)
+  ~removeActionFromSequence(idToRemove:)
+  ~removeActionFromSequenceCreatePage(idToRemove:)
+  ~deleteAllActionsOnMainPage()
+  ~deleteSequence()
+  ~addSequence(sequenceName:sequenceActions:bgColor:)
+  ~unionSequences(sequencesIds:bgColor:)
+  ~getSequenceForEdit(sequenceID:)
+  ~updateSequence(updatedSequence:)
+  ~cleanUpMemory() 
+}
+class "Color" as Color << (X, Orchid) extension >> { 
+  init(hex:) 
+}
+class "Color" as Color10 << (X, Orchid) extension >> { 
+  toHex() 
+}
+class "View" as View << (X, Orchid) extension >> { 
+  hideKeyboard() 
+}
+class "Action" as Action << (S, SkyBlue) struct >> { 
+  ~id : UUID
+  ~sequenceId : UUID!
+  ~name : String
+  ~description : String
+  ~duration : Int
+  ~imageName : String
+  ~init(name:description:duration:imageName:sequenceId:) 
+}
+App <|-- PPO_LAB_2App : inherits
+View <|-- MenuButtons : inherits
+View <|-- ActionCardView : inherits
+View <|-- SettingsView : inherits
+View <|-- FooterView : inherits
+View <|-- TimerView : inherits
+View <|-- HeaderView : inherits
+View <|-- MainView : inherits
+View <|-- CreateSequenceView : inherits
+View <|-- EditSequenceView : inherits
+View <|-- SequencesUnionView : inherits
+View <|-- SequenceCardView : inherits
+Hashable <|-- Sequence : inherits
+ObservableObject <|-- ViewModel : inherits
+Hashable <|-- Action : inherits
+ActionCardView <.. ActionCardView0 : ext
+SettingsView <.. SettingsView1 : ext
+FooterView <.. FooterView2 : ext
+TimerView <.. TimerView3 : ext
+HeaderView <.. HeaderView4 : ext
+MainView <.. MainView5 : ext
+CreateSequenceView <.. CreateSequenceView6 : ext
+EditSequenceView <.. EditSequenceView7 : ext
+SequencesUnionView <.. SequencesUnionView8 : ext
+SequenceCardView <.. SequenceCardView9 : ext
+Color <.. Color10 : ext
+@enduml
