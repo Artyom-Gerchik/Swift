@@ -64,6 +64,9 @@ extension CreateSequenceView: View {
                         vm.state = ViewModel.State.secondPage
                         
                         vm.sequenceOnCreatePhase = Sequence(name: "", actions: [], bgColor: "''")
+                        
+                        print(bgColor.toHex())
+                        
                     }
                 }, label: {
                     Text((locale ? "ДОБРО" : "OK"))
