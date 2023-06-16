@@ -11,7 +11,7 @@ import SwiftUI
 struct _77WrapperApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView(vm:ViewModel(state: ViewModel.State.mainPage))
         }
     }
 }
