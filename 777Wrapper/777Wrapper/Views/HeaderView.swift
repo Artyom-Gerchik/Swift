@@ -17,9 +17,11 @@ extension HeaderView: View {
         if(vm.state == ViewModel.State.mainPage){
             
             HStack{
+                Spacer()
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)){
                         vm.state = ViewModel.State.mainPage
+                        vm.parseHTML();
                     }
                 }, label: {
                     Text("To Minsk")
@@ -44,10 +46,22 @@ extension HeaderView: View {
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(30)
                 .background(RoundedRectangle(cornerRadius: 30).stroke(Color.black, lineWidth: 2))
+                
+                Spacer()
+                
+                Button(action: {
+                    withAnimation(.easeIn(duration: 0.25)) {
+                    }
+                }, label: {
+                    Image(systemName: "arrow.2.squarepath")
+                        .font(.system(size: 24, weight: .regular))
+                }).accentColor(Color.primary)
+                
             }.padding()
         }
         else if(vm.state == ViewModel.State.secondPage){
             HStack{
+                Spacer()
                 Button(action: {
                     withAnimation(.easeIn(duration: 0.25)){
                         vm.state = ViewModel.State.mainPage
@@ -75,6 +89,17 @@ extension HeaderView: View {
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(30)
                 .background(RoundedRectangle(cornerRadius: 30).stroke(Color.black, lineWidth: 2))
+                
+                Spacer()
+                
+                Button(action: {
+                    withAnimation(.easeIn(duration: 0.25)) {
+                    }
+                }, label: {
+                    Image(systemName: "arrow.2.squarepath")
+                        .font(.system(size: 24, weight: .regular))
+                }).accentColor(Color.primary)
+                
             }.padding()
         }
     }
