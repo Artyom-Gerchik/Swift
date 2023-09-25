@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "0DEBC60E-02F9-428F-AFF3-0E9C5595C56E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B31BAAD6-27CD-405F-A151-3CBCDEBCA1CB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MMOD-LAB1/Entities/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "thirdTask(probability:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B31BAAD6-27CD-405F-A151-3CBCDEBCA1CB - 5246acd95b2ff7e7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.thirdTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "1828">
+               </Location>
+               <Location
+                  uuid = "B31BAAD6-27CD-405F-A151-3CBCDEBCA1CB - 5246acd95b2ff7e7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.thirdTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "1852">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D307B1DB-CA87-41CB-8DAF-CF4FCFC4242F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MMOD-LAB1/Entities/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "fourthTask(probability:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D307B1DB-CA87-41CB-8DAF-CF4FCFC4242F - e245aa0517afd3a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.fourthTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "2444">
+               </Location>
+               <Location
+                  uuid = "D307B1DB-CA87-41CB-8DAF-CF4FCFC4242F - e245aa0517afd3a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.fourthTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "2496">
+               </Location>
+               <Location
+                  uuid = "D307B1DB-CA87-41CB-8DAF-CF4FCFC4242F - e245aa0517afd3a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.fourthTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "2500">
+               </Location>
+               <Location
+                  uuid = "D307B1DB-CA87-41CB-8DAF-CF4FCFC4242F - e245aa0517afd3a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.fourthTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "2508">
+               </Location>
+               <Location
+                  uuid = "D307B1DB-CA87-41CB-8DAF-CF4FCFC4242F - e245aa0517afd3a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.fourthTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "2660">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "269C397E-A76F-48DD-B419-CE2BCE3BE493"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MMOD-LAB1/Entities/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "fourthTask(probability:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3C15884-C1CD-4D4A-92EF-082EB0A882BE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MMOD-LAB1/Entities/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "fourthTask(probability:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B12CAB4E-C7AE-49C9-A5D7-7203D806B2FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MMOD-LAB1/Entities/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "weightedRandom(weightedValues:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5AD3E6E7-EE30-4C43-BD1D-43DDBDF2BC11"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MMOD-LAB1/Entities/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "fourthTask(probability:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5AD3E6E7-EE30-4C43-BD1D-43DDBDF2BC11 - e245aa0517afd0dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.fourthTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "3464">
+               </Location>
+               <Location
+                  uuid = "5AD3E6E7-EE30-4C43-BD1D-43DDBDF2BC11 - e245aa0517afd0dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MMOD_LAB1.ViewModel.fourthTask(probability: Swift.String) -&gt; ()"
+                  moduleName = "MMOD-LAB1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/MMOD/MMOD-LAB1/MMOD-LAB1/Entities/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "3460">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E119215C-8836-4EA9-87B0-88D4E188A960"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MMOD-LAB1/Entities/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "funcForTask4(array:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
