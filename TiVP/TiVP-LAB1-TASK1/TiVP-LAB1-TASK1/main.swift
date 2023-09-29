@@ -7,12 +7,34 @@
 
 import Foundation
 
-print("Hello, World!")
-print("Andhiagain!")
+//public func task1ForTest() -> [String]{
+//    var outArray = [String]()
+//    var stringForExclamanationPoints = ""
+//
+//    outArray.append("Hello, World!")
+//    outArray.append("Andhiagain!")
+//
+//    let numberOfExclamanationPoints = Int.random(in: 6...49)
+//
+//    for _ in 0...numberOfExclamanationPoints{
+//        stringForExclamanationPoints += "!"
+//    }
+//
+//    outArray.append(stringForExclamanationPoints)
+//
+//    return outArray
+//}
 
-var numberOfExclamanationPoints = Int.random(in: 5...50)
+func task1(){
+    print("Hello, World!")
+    print("Andhiagain!")
 
-for _ in 0...numberOfExclamanationPoints{
-    print("!", terminator: "")
+    let numberOfExclamanationPoints = Int.random(in: 4...49)
+
+    for _ in 0...numberOfExclamanationPoints{
+        print("!", terminator: "")
+    }
+    print("")
 }
-print("")
+
+task1()

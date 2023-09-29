@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8CED5F55-FA8E-4DD4-B19B-ECAA06E7AC9F"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B060F4E-4982-40DD-B0EA-819619AB5A89"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TiVP-LAB1-TASK6/main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "loadFileSync(url:destinationUrl1:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "1B060F4E-4982-40DD-B0EA-819619AB5A89 - 321e000166cae1c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TiVP_LAB1_TASK6.loadFileSync(url: Foundation.URL, destinationUrl1: Foundation.URL) -&gt; ()"
+                  moduleName = "TiVP-LAB1-TASK6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK6/TiVP-LAB1-TASK6/main.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "1653">
+               </Location>
+               <Location
+                  uuid = "1B060F4E-4982-40DD-B0EA-819619AB5A89 - 321e000166cae112"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TiVP_LAB1_TASK6.loadFileSync(url: Foundation.URL, destinationUrl1: Foundation.URL) -&gt; ()"
+                  moduleName = "TiVP-LAB1-TASK6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK6/TiVP-LAB1-TASK6/main.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "2057">
+               </Location>
+               <Location
+                  uuid = "1B060F4E-4982-40DD-B0EA-819619AB5A89 - 321e000166cae196"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TiVP_LAB1_TASK6.loadFileSync(url: Foundation.URL, destinationUrl1: Foundation.URL) -&gt; ()"
+                  moduleName = "TiVP-LAB1-TASK6"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK6/TiVP-LAB1-TASK6/main.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1653">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEB9F085-4E89-40AA-B206-133994DDF7E5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TiVP-LAB1-TASK6/main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "loadFileSync(url:destinationUrl1:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1117E330-5028-48A2-BD7A-381E4C930C1A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnitTests_Framework/utils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "loadFileSync(url:destinationUrl1:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "1117E330-5028-48A2-BD7A-381E4C930C1A - 1d91a6817518827b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnitTests_FrameworkTests.loadFileSync(url: Foundation.URL, destinationUrl1: Foundation.URL) -&gt; Swift.String"
+                  moduleName = "UnitTests_FrameworkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK6/UnitTests_Framework/utils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "183">
+               </Location>
+               <Location
+                  uuid = "1117E330-5028-48A2-BD7A-381E4C930C1A - 2a9a3e4131912bf3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnitTests_Framework.loadFileSync(url: Foundation.URL, destinationUrl1: Foundation.URL) -&gt; Swift.String"
+                  moduleName = "UnitTests_Framework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK6/UnitTests_Framework/utils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "183">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "92D8D6C0-7212-4D0F-9FEF-62BEC150BE0E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnitTests_FrameworkTests/UnitTests_FrameworkTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "testFirstTask()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

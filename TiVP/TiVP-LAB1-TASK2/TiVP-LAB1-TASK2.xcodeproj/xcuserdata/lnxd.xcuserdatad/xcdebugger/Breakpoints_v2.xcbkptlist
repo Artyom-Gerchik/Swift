@@ -3,4 +3,100 @@
    uuid = "F7440D1B-F12E-458F-AD8C-CB4FDA78EB1C"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F489B904-F9B0-4CD3-AD9F-66F6C2DBBC20"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnitTests_FrameworkTests/UnitTests_FrameworkTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "testFirstTask()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8DF6066-096B-4322-8FEF-CD8454EAD3EF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnitTests_Framework/utils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "getHumans(humans:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A8DF6066-096B-4322-8FEF-CD8454EAD3EF - dcab2fd4b1c4b2e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnitTests_FrameworkTests.Brain.getHumans(humans: Swift.Array&lt;UnitTests_FrameworkTests.Human&gt;) -&gt; Swift.Bool"
+                  moduleName = "UnitTests_FrameworkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK2/UnitTests_Framework/utils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  uuid = "A8DF6066-096B-4322-8FEF-CD8454EAD3EF - 298f664325f23147"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnitTests_Framework.Brain.getHumans(humans: Swift.Array&lt;UnitTests_Framework.Human&gt;) -&gt; Swift.Bool"
+                  moduleName = "UnitTests_Framework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK2/UnitTests_Framework/utils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  uuid = "A8DF6066-096B-4322-8FEF-CD8454EAD3EF - dcab2fd4b1c4b2e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnitTests_FrameworkTests.Brain.getHumans(humans: Swift.Array&lt;UnitTests_FrameworkTests.Human&gt;) -&gt; Swift.Bool"
+                  moduleName = "UnitTests_FrameworkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK2/UnitTests_Framework/utils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "97">
+               </Location>
+               <Location
+                  uuid = "A8DF6066-096B-4322-8FEF-CD8454EAD3EF - 298f664325f23147"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnitTests_Framework.Brain.getHumans(humans: Swift.Array&lt;UnitTests_Framework.Human&gt;) -&gt; Swift.Bool"
+                  moduleName = "UnitTests_Framework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK2/UnitTests_Framework/utils.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "97">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

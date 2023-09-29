@@ -7,8 +7,6 @@
 
 import Foundation
 
-print("Hello, World!")
-
 let fileManager = FileManager.default
 let filePath = "/Users/lnxd/Desktop/TASK4.html"
 var fileContent = "<!DOCTYPE html> <html lang='en'> <head> <title>A simple HTML document</title> </head> <body> <table cellspacing='0' style='width: 100%; height: 100vh' >"

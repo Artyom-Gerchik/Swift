@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "37235A07-ACAB-4A73-A609-D369C6357430"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC4B2390-0FF4-443F-B5AE-A1104337A190"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnitTests_FrameworkTests/UnitTests_FrameworkTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "testFirstTask()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EC4B2390-0FF4-443F-B5AE-A1104337A190 - 1c1342a99fe17003"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnitTests_FrameworkTests.UnitTests_FrameworkTests.testFirstTask() -&gt; ()"
+                  moduleName = "UnitTests_FrameworkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK1/UnitTests_FrameworkTests/UnitTests_FrameworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "1318">
+               </Location>
+               <Location
+                  uuid = "EC4B2390-0FF4-443F-B5AE-A1104337A190 - fbd0967e16687eb6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #7 (Swift.Int, Swift.Int) -&gt; Swift.Bool in UnitTests_FrameworkTests.UnitTests_FrameworkTests.testFirstTask() -&gt; ()"
+                  moduleName = "UnitTests_FrameworkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK1/UnitTests_FrameworkTests/UnitTests_FrameworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "34">
+               </Location>
+               <Location
+                  uuid = "EC4B2390-0FF4-443F-B5AE-A1104337A190 - 1c1342a99fe17020"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnitTests_FrameworkTests.UnitTests_FrameworkTests.testFirstTask() -&gt; ()"
+                  moduleName = "UnitTests_FrameworkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK1/UnitTests_FrameworkTests/UnitTests_FrameworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "1451">
+               </Location>
+               <Location
+                  uuid = "EC4B2390-0FF4-443F-B5AE-A1104337A190 - 290831666c57d487"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #9 (Swift.Int, Swift.Int) -&gt; Swift.Bool in UnitTests_FrameworkTests.UnitTests_FrameworkTests.testFirstTask() -&gt; ()"
+                  moduleName = "UnitTests_FrameworkTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lnxd/Developer/TiVP/TiVP-LAB1-TASK1/UnitTests_FrameworkTests/UnitTests_FrameworkTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
